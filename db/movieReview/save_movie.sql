@@ -1,0 +1,1 @@
+INSERT INTO movie (title, poster, summary, api_id) VALUES ($1, $2, $3, $4);

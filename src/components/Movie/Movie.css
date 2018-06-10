@@ -1,0 +1,57 @@
+.selected-poster {
+  width: 300px;
+  height: auto;
+  margin-top: 25px;
+}
+.selected-title {
+  margin: 5px;
+}
+.selected-summary {
+  margin: 25px;
+  text-align: left;
+}
+.movie-reviews-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.movie-reviews {
+  border: solid 1px black;
+  height: 100px;
+  width: 90vw;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  font-size: .75em;
+  position: relative;
+}
+.user-review-pic {
+  height: 50px;
+  width: auto;
+  border-radius: 50%;
+  border: solid 1px black;
+}
+.user-tag {
+  margin: 0 15px 0 5px;
+}
+.review-card-text {
+  margin-right: 28px;
+  height: 73px;
+  overflow: hidden;
+  text-align: left;
+}
+.review-buttons {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  width: 25px;
+}
+.rv-btn {
+  font-size: 1em;
+  padding: 0 3px;
+  height: 49px;
+}

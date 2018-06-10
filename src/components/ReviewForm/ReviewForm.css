@@ -1,0 +1,21 @@
+.review-poster {
+  width: 300px;
+  height: auto;
+  margin-top: 25px;
+}
+.review-input {
+  margin: 25px 0 5px 0;
+  width: 300px;
+  height: 150px;
+  overflow: scroll;
+}
+.review-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.review-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

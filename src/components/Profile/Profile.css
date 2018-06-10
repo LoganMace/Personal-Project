@@ -1,0 +1,55 @@
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.profile-pic {
+  height: 100px;
+  width: auto;
+  margin-right: 15px;
+  border: solid 1px black;
+}
+.profile-card {
+  margin: 25px;
+}
+.profile-interests {
+  text-align: left;
+}
+.edit-profile {
+  margin: 5px;
+  position: absolute;
+  right: 0;
+}
+.pic-card {
+  position: relative;
+  display: flex;
+  width: max-content;
+  float: left;
+}
+.pic-username {
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.781);
+  color: white;
+}
+.profile-review {
+  border: solid 1px black;
+  margin-top: 10px;
+  height: 100px;
+  width: 90vw;
+  display: flex;
+  align-items: center;
+  font-size: .75em;
+  position: relative;
+}
+.profile-review-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.profile-review-poster {
+  margin-right: 10px;
+  height: 100px;
+  width: auto;
+}

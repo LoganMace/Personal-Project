@@ -1,0 +1,1 @@
+SELECT * FROM movie WHERE api_id = $1;

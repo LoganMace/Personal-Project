@@ -1,0 +1,16 @@
+.results-box {
+  width: 250px;
+  height: 200px;
+  overflow: scroll;
+  margin: 0 auto;
+  border: solid 1px gray;
+  position: absolute;
+  top: 50px;
+  right: 0;
+}
+.search-input {
+  width: 100px;
+}
+.search-bar {
+  margin-right: 10px;
+}

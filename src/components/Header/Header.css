@@ -1,0 +1,23 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  width: 100vw;
+  border: solid 1px black;
+  position: fixed;
+  z-index: 99;
+  background: linear-gradient(to bottom right, rgb(230, 0, 0), rgb(134, 0, 0));
+}
+.nav-links {
+  display: flex;
+  margin-left: 10px;
+}
+.nav-buttons {
+  margin-right: 15px;
+}
+.nav-buttons a {
+  text-decoration: none;
+  color: black;
+  font-weight: bolder;
+}

@@ -1,0 +1,16 @@
+.popular-poster {
+  width: 300px;
+  height: auto;
+}
+.popular-card {
+  border: solid 1px black;
+}
+.card-box {
+  display: flex;
+  width: 302px;
+  overflow: scroll;
+  margin: 0 auto;
+}
+.home-box {
+  margin-top: 25px;
+}

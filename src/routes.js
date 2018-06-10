@@ -1,0 +1,23 @@
+import React from 'react';
+import { Switch, Route } from 'react-router-dom'
+
+// import Login from './components/Login/Login';
+import Home from './components/Home/Home';
+import EditProfile from './components/EditProfile/EditProfile';
+import Movie from './components/Movie/Movie';
+import Profile from './components/Profile/Profile';
+import ReviewForm from './components/ReviewForm/ReviewForm';
+
+
+
+export default (
+  <Switch>
+    {/* <Route component={Login} exact path={'/'}/> */}
+    <Route component={Home} exact path={'/'}/>
+    <Route component={EditProfile} path={'/editprofile'}/>
+    <Route component={Profile} path={'/profile'}/>
+    <Route component={ReviewForm} path={'/movie/:id/reviewform'}/>
+    <Route component={Movie} path={'/movie/:id'}/>
+    {/* <Route component={Review} path={'/'}/> */}
+  </Switch>
+);

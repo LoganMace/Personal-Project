@@ -1,0 +1,1 @@
+INSERT INTO review (review, user_id, movie_id, api_id) VALUES ($1, $2, $3, $4);
