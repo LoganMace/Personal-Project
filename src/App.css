@@ -1,9 +1,11 @@
 body {
   text-align: center;
-  background: linear-gradient(to bottom right, rgb(180, 180, 180), rgb(102, 102, 102));
   background-size: cover;
-  background-repeat: no-repeat;
   min-height: 100vh;
+  background-image: url('./images/manos-gkikas-422953-unsplash.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
 }
 .routes {
   padding-top: 50px;

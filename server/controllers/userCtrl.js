@@ -25,13 +25,21 @@ function getUserReviews(req, res, next) {
   req.app.get('db')
     .userInfo.get_userReviews([req.params.id])
     .then(response => {
-      console.log(response);
+      // console.log(response);
       res.status(200).json(response)})
+    .catch(err => console.log(err));
+};
+
+function getUserById(req, res, next) {
+  req.app.get('db')
+    .userInfo.getUserById([req.params.id])
+    .then(response => res.status(200).json(response))
     .catch(err => console.log(err));
 };
 
 module.exports = {
   editInterests,
   editUsername,
-  getUserReviews
+  getUserReviews,
+  getUserById
 }

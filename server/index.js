@@ -11,8 +11,9 @@ const app = express();
 
 const { getPopular, getSpecific, searchMovie, getDbMovie } = require('./controllers/movieCtrl');
 const { strat, getUser, logout } = require('./controllers/authCtrl');
-const { editInterests, editUsername, getUserReviews } = require('./controllers/userCtrl');
-const { addReview, getMovieReviews, deleteReview } = require('./controllers/reviewCtrl')
+const { editInterests, editUsername, getUserReviews, getUserById } = require('./controllers/userCtrl');
+const { addReview, getMovieReviews, deleteReview } = require('./controllers/reviewCtrl');
+const { addFollow, getFollowReviews } = require('./controllers/followCtrl');
 
 massive(process.env.CONNECTION_STRING)
   .then(db => app.set('db', db))
@@ -59,11 +60,14 @@ app.get('/api/data/:id', getDbMovie);
 app.put('/api/editinterests/:id', editInterests);
 app.put('/api/editusername/:id', editUsername);
 app.get('/api/user/reviews/:id', getUserReviews);
+app.get('/api/profile/:id', getUserById);
 
 app.post('/api/review', addReview);
 app.get('/api/movie/reviews/:id', getMovieReviews);
 app.delete('/api/movie/reviews/:id', deleteReview);
 
+app.post('/api/follow', addFollow);
+app.get('/api/follow/reviews/:id', getFollowReviews);
 
 app.get('/login',
   passport.authenticate('auth0', {

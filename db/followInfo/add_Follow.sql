@@ -1,0 +1,1 @@
+INSERT INTO relation (follower, following) VALUES ($1, $2);

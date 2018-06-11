@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/fontawesome-free-solid';
 
 import './Search.css';
 import { apiKey } from '../../key';
@@ -60,7 +62,7 @@ class Search extends Component {
     const searchResults = this.state.results.map((movie) => {
       return (
         <div key={movie.id}>
-          <Link to={`/movie/${movie.id}`}><h3 onClick={() => this.clickHandler()}>{movie.title}</h3></Link>
+          <Link to={`/movie/${movie.id}`}><h3 className='search-results' onClick={() => this.clickHandler()}>{movie.title}</h3></Link>
         </div>
       )
     });
@@ -70,7 +72,7 @@ class Search extends Component {
         <div className='search-bar'>
           <form onSubmit={()=>{this.submitHandler()}}>
             <input className='search-input' type="text" value={this.state.input} onChange={(e)=>{this.searchHandler(e)}}/>
-            <button>Search</button>
+            <button className='search-button'><FontAwesomeIcon icon={faSearch} /></button>
           </form>
         </div>
         {(this.state.isOpen) ? ((this.state.results.length > 0) ? <div ref='box' className='results-box'>{searchResults}</div> : null) : null}

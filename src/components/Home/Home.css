@@ -14,3 +14,14 @@
 .home-box {
   margin-top: 25px;
 }
+.follow-review-poster {
+  position: absolute;
+  right: 0;
+  height: 100px;
+}
+.follow-card-text {
+  margin-right: 80px;
+  height: 73px;
+  overflow: hidden;
+  text-align: left;
+}

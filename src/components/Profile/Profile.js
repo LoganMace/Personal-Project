@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import { faTrashAlt, faEdit, faUserEdit } from '@fortawesome/fontawesome-free-solid';
+import { faEdit, faTrashAlt } from '@fortawesome/fontawesome-free-regular';
+import { faUserEdit } from '@fortawesome/fontawesome-free-solid';
 
 import { getUser, getUserReviews } from '../../ducks/userReducer';
 import { deleteReview, editReview } from '../../ducks/reviewReducer';
@@ -34,7 +35,7 @@ class Profile extends Component {
     const {user} = this.props.user;
 
     const reviewList = this.props.user.userReviews.map((review) => {
-      return  <div className='profile-review' key={review.review_id}>
+      return  <div className='movie-reviews' key={review.review_id}>
                 <img className='profile-review-poster' src={`https://image.tmdb.org/t/p/w92/${review.poster}`} alt={`${review.title} poster`}/>
                 <p className='review-card-text'>
                   {review.review}
@@ -49,16 +50,15 @@ class Profile extends Component {
     return (
       <div>
         {!this.props.user.isAuthed ? (
-          <h1>Log in to view profile!</h1>
+          <h1 className='login-message'>Log in to view profile!</h1>
         ) : (
           <div className='profile-page'>
-            <Link to='/editprofile'><button className='edit-profile'><FontAwesomeIcon icon={faUserEdit} /></button></Link>
             <div className='profile-card'>
               <div className='pic-card'>
                 <img className='profile-pic' src={user.avatar} alt="user-avatar"/>
                 <p className='pic-username'>{user.username}</p>
               </div>
-              <p className='profile-interests'>Movie Interests:<br/><br/>{user.interests}</p>
+              <p className='profile-interests'>Movie Interests: <Link to='/editprofile'><button className='edit-profile'><FontAwesomeIcon icon={faUserEdit} /></button></Link><br/><br/>{user.interests}</p>
             </div>
             <div className='profile-review-list'>
               {reviewList}

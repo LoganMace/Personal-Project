@@ -7,11 +7,11 @@ nav {
   border: solid 1px black;
   position: fixed;
   z-index: 99;
-  background: linear-gradient(to bottom right, rgb(230, 0, 0), rgb(134, 0, 0));
+  background: linear-gradient(to bottom right, rgb(155, 1, 1), rgb(80, 0, 0));
 }
 .nav-links {
   display: flex;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 .nav-buttons {
   margin-right: 15px;

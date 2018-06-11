@@ -16,7 +16,7 @@ function addReview(req, res, next) {
       let movie = response.map((review) => {
         return review.id
       });
-      console.log('map log------------     ', movie);
+      // console.log('map log------------     ', movie);
       db.movieReview.add_review([review.input, userid, movie[movie.length-1], api_id]);
     })
     .then(response => res.status(200).json())

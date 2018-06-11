@@ -14,9 +14,11 @@ class App extends Component {
       <Provider store={store}>
         <HashRouter>
           <div className="App">
-            <Header />
-            <div className='routes'>
-              {routes}
+            <div className='bg-layer'>
+              <Header />
+              <div className='routes'>
+                {routes}
+              </div>
             </div>
           </div>
         </HashRouter>

@@ -1,7 +1,20 @@
+/* .movie-page {
+  background-image: url('../../images/felix-mooneeram-222805-unsplash.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+} */
+.movie-card {
+  background: rgba(255, 255, 255, 0.404);
+  border-radius: 5px;
+  margin: 25px auto 0 auto;
+  padding-top: 20px;
+  padding-bottom: 5px;
+  width: 90vw;
+}
 .selected-poster {
   width: 300px;
   height: auto;
-  margin-top: 25px;
 }
 .selected-title {
   margin: 5px;
@@ -17,15 +30,17 @@
   margin-bottom: 10px;
 }
 .movie-reviews {
-  border: solid 1px black;
+  border: solid 1px rgba(169, 169, 169, 0.459);
   height: 100px;
   width: 90vw;
   margin-top: 10px;
   display: flex;
   align-items: center;
   overflow: hidden;
-  font-size: .75em;
+  font-size: .9em;
   position: relative;
+  background: rgba(255, 255, 255, 0.404);
+  border-radius: 5px;
 }
 .user-review-pic {
   height: 50px;
@@ -44,14 +59,15 @@
 }
 .review-buttons {
   position: absolute;
-  bottom: 0;
+  top: 0;
   right: 0;
   display: flex;
   flex-direction: column;
   width: 25px;
 }
 .rv-btn {
-  font-size: 1em;
-  padding: 0 3px;
-  height: 49px;
+  height: 25px;
+  border: solid 1px black;
+  background-color: rgba(163, 3, 3, 0.486);
+  border-radius: 5px;
 }
