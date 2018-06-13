@@ -20,6 +20,14 @@ function editUsername(req, res, next) {
     .catch(err => console.log(err));
 };
 
+function editAvatar(req, res, next) {
+  // console.log('CHECK HERE!!!!     ', req.body);
+  req.app.get('db')
+    .editProfile.edit_avatar([req.body.avatar, req.params.id])
+    .then(response => {res.status(200).json(response)})
+    .catch(err => console.log(err));
+};
+
 function getUserReviews(req, res, next) {
   // console.log(req.params);
   req.app.get('db')
@@ -40,6 +48,7 @@ function getUserById(req, res, next) {
 module.exports = {
   editInterests,
   editUsername,
+  editAvatar,
   getUserReviews,
   getUserById
 }

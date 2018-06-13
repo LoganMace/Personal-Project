@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import firebase from '../../firebase';
+import FileUploader from 'react-firebase-file-uploader';
 
-import { getUser, editInterests, editUsername } from '../../ducks/userReducer';
+import { getUser, editInterests, editUsername, editAvatar } from '../../ducks/userReducer';
 import './EditProfile.css';
 
 class EditProfile extends Component {
@@ -10,7 +12,11 @@ class EditProfile extends Component {
     super(props);
     this.state = {
       username: '',
-      interests: ''
+      interests: '',
+      avatar: '',
+      isUploading: false,
+      progress: 0,
+      avatarURL: ''
     }
     this.inputUsernameHandler = this.inputUsernameHandler.bind(this);
     this.inputInterestsHandler = this.inputInterestsHandler.bind(this);
@@ -20,7 +26,6 @@ class EditProfile extends Component {
 
   componentDidMount() {
     this.props.getUser();
-    // console.log('getUser fired');
   };
 
   inputUsernameHandler(e) {
@@ -50,22 +55,58 @@ class EditProfile extends Component {
     });
   };
 
+  handleUploadStart = () => this.setState({isUploading: true, progress: 0});
+  handleProgress = (progress) => this.setState({progress});
+  handleUploadError = (error) => {
+    this.setState({isUploading: false});
+    console.error(error);
+  }
+  handleUploadSuccess = (filename) => {
+    this.setState({avatar: filename, progress: 100, isUploading: false});
+    firebase.storage().ref('images').child(filename).getDownloadURL().then(url => this.setState({avatarURL: url})).then(() => this.props.editAvatar(this.props.user.user.id, this.state.avatarURL));
+  };
+
+
   render() {
     // console.log(this.props);
     return (
-      <div className='editprof-card'>
-        <img className='avatar' src={this.props.user.user.avatar} alt="user-avatar"/>
-        <h3>UserName: {this.props.user.user.username}</h3>
-        <div className='username-bar'>
-          <input type="text" onChange={(e)=>{this.inputUsernameHandler(e)}}/>
-          <button onClick={() => {this.submitUsernameHandler()}}>Submit</button>
+<div>
+        {!this.props.user.isAuthed ? (
+          <h1 className='login-message'>Log in to view profile!</h1>
+        ) : (
+          <div className='editprof-card'>
+          <img className='avatar' src={this.props.user.user.avatar} alt="user-avatar"/>
+          <div className='upload'>
+            <form>
+              <label>Avatar:</label>
+              {this.state.isUploading &&
+                <p>Progress: {this.state.progress}</p>
+              }
+              <FileUploader
+                accept="image/*"
+                name="avatar"
+                randomizeFilename
+                storageRef={firebase.storage().ref('images')}
+                onUploadStart={this.handleUploadStart}
+                onUploadError={this.handleUploadError}
+                onUploadSuccess={this.handleUploadSuccess}
+                onProgress={this.handleProgress}
+              />
+            </form>
+          </div>
+          <h3>UserName: {this.props.user.user.username}</h3>
+          <div className='username-bar'>
+            <input type="text" onChange={(e)=>{this.inputUsernameHandler(e)}}/>
+            <button onClick={() => {this.submitUsernameHandler()}}>Submit</button>
+          </div>
+          <h4>Movie Interests:</h4>
+          <div className='interests-bar'>
+            <input type="text" onChange={(e)=>{this.inputInterestsHandler(e)}}/>
+            <button onClick={() => {this.submitInterestsHandler()}}>Submit</button>
+          </div>
+          <div className='interests'>{this.props.user.user.interests}</div>
         </div>
-        <h4>Movie Interests:</h4>
-        <div className='interests-bar'>
-          <input type="text" onChange={(e)=>{this.inputInterestsHandler(e)}}/>
-          <button onClick={() => {this.submitInterestsHandler()}}>Submit</button>
-        </div>
-        <div className='interests'>{this.props.user.user.interests}</div>
+        )}
       </div>
     )
   }
@@ -73,4 +114,4 @@ class EditProfile extends Component {
 
 const mapStateToProps = state => state;
 
-export default connect(mapStateToProps, {getUser, editInterests, editUsername})(EditProfile);
+export default connect(mapStateToProps, {getUser, editInterests, editUsername, editAvatar})(EditProfile);

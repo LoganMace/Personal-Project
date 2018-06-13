@@ -7,7 +7,7 @@ nav {
   border: solid 1px black;
   position: fixed;
   z-index: 99;
-  background: linear-gradient(to bottom right, rgb(155, 1, 1), rgb(80, 0, 0));
+  background: linear-gradient(to bottom right, rgba(155, 1, 1, 0.89), rgba(80, 0, 0, 0.849));
 }
 .nav-links {
   display: flex;

@@ -9,11 +9,11 @@ const passport = require('passport');
 const port = process.env.PORT || 3001;
 const app = express();
 
-const { getPopular, getSpecific, searchMovie, getDbMovie } = require('./controllers/movieCtrl');
-const { strat, getUser, logout } = require('./controllers/authCtrl');
-const { editInterests, editUsername, getUserReviews, getUserById } = require('./controllers/userCtrl');
-const { addReview, getMovieReviews, deleteReview } = require('./controllers/reviewCtrl');
-const { addFollow, getFollowReviews } = require('./controllers/followCtrl');
+const { getPopular, getSpecific, searchMovie, getDbMovie } = require(`${__dirname}/controllers/movieCtrl`);
+const { strat, getUser, logout } = require(`${__dirname}/controllers/authCtrl`);
+const { editInterests, editUsername, editAvatar, getUserReviews, getUserById } = require(`${__dirname}/controllers/userCtrl`);
+const { addReview, getMovieReviews, deleteReview } = require(`${__dirname}/controllers/reviewCtrl`);
+const { addFollow, getFollowReviews } = require(`${__dirname}/controllers/followCtrl`);
 
 massive(process.env.CONNECTION_STRING)
   .then(db => app.set('db', db))
@@ -59,6 +59,7 @@ app.get('/api/data/:id', getDbMovie);
 
 app.put('/api/editinterests/:id', editInterests);
 app.put('/api/editusername/:id', editUsername);
+app.put('/api/editavatar/:id', editAvatar);
 app.get('/api/user/reviews/:id', getUserReviews);
 app.get('/api/profile/:id', getUserById);
 

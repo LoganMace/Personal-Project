@@ -10,7 +10,7 @@ export function addFollow(userid, followid) {
   };
 };
 export function getFollowReviews(id) {
-  console.log('follow id!!!   ',id);
+  // console.log('follow id!!!   ',id);
   return {
     type: GET_FOLLOW_REVIEWS,
     payload: axios.get(`/api/follow/reviews/${id}`)

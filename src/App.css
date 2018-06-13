@@ -1,4 +1,4 @@
-body {
+/* body {
   text-align: center;
   background-size: cover;
   min-height: 100vh;
@@ -6,7 +6,17 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   position: relative;
+} */
+body {
+  text-align: center;
+  background: linear-gradient(135deg, rgba(0,0,0,1) 0%,rgba(91,91,91,1) 50%,rgb(58, 58, 58) 99%);
+  background-attachment: fixed;
 }
+/* body {
+  text-align: center;
+  background: linear-gradient(to right, #870000, #190a05);
+  background-attachment: fixed;
+} */
 .routes {
   padding-top: 50px;
 }

@@ -3,8 +3,11 @@ import { connect } from 'react-redux';
 import { getPopular } from '../../ducks/movieReducer';
 import { getUser } from '../../ducks/userReducer';
 import { Link } from 'react-router-dom';
+import Slider from "react-slick";
 
 import { getFollowReviews } from '../../ducks/followReducer';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 import './Home.css';
 
 class Home extends Component {
@@ -16,6 +19,22 @@ class Home extends Component {
 
   render() {
     console.log(this.props);
+
+    const settings = {
+      className: "center",
+      centerMode: true,
+      infinite: true,
+      centerPadding: "30px",
+      slidesToShow: 1,
+      speed: 1000,
+      autoplay: true,
+      autoplaySpeed: 5000,
+      pauseOnFocus: true,
+      pauseOnHover: true,
+      swipeToSlide: true,
+      draggable: true
+    };
+
     const popular = this.props.movie.popularMovies.map((movie) => {
       return(
         <div className='popular-card' key={movie.id}>
@@ -32,14 +51,18 @@ class Home extends Component {
                 <p className='follow-card-text'>
                   {review.review}
                 </p>
-                <img className='follow-review-poster' src={`https://image.tmdb.org/t/p/w92/${review.poster}`} alt={`${review.title} poster`}/>
+                <Link to={`/movie/${review.api_id}`}><img className='follow-review-poster' src={`https://image.tmdb.org/t/p/w92/${review.poster}`} alt={`${review.title} poster`}/></Link>
               </div>
     });
 
     return (
       <div className='home-box'>
         <div className='card-box'>
-          {popular} 
+          <div className='slider'>
+          </div>
+          <Slider {...settings}>
+            {popular} 
+          </Slider>
         </div>
         <div className='timeline'>
           <div className='movie-reviews-list'>
