@@ -26,9 +26,17 @@ function getDbMovie(req, res, next) {
     .catch(arr => console.log(err));
 };
 
+function getAverage(req, res, next) {
+  req.app.get('db')
+    .movieReview.get_average(req.params.id)
+    .then(response => res.status(200).json(response))
+    .catch(arr => console.log(err));
+};
+
 
 module.exports = {
   getPopular,
   getSpecific,
-  getDbMovie
+  getDbMovie,
+  getAverage
 };

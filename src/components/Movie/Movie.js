@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 // import { faTrashAlt } from '@fortawesome/fontawesome-free-solid';
 import { faEdit, faTrashAlt } from '@fortawesome/fontawesome-free-regular';
+import StarRatings from 'react-star-ratings'
 
-import { getSpecific, getDbMovie } from '../../ducks/movieReducer';
+import { getSpecific, getDbMovie, getAverage } from '../../ducks/movieReducer';
 import { getMovieReviews, deleteReview, editReview } from '../../ducks/reviewReducer';
 import './Movie.css';
 
@@ -21,6 +22,7 @@ class Movie extends Component {
     this.props.getSpecific(this.props.match.params.id);
     this.props.getDbMovie(this.props.match.params.id);
     this.props.getMovieReviews(this.props.match.params.id);
+    this.props.getAverage(this.props.match.params.id);
   };
 
   componentDidUpdate(prevProps) {
@@ -39,13 +41,23 @@ class Movie extends Component {
 
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
+
     const reviewList = this.props.review.reviews.map((review) => {
       return  <div className='movie-reviews' key={review.review_id}>
                 <div className='user-tag'>
                   <Link to={`/profile/${review.user_id}`}><img className='user-review-pic' src={review.avatar} alt="user-avatar"/></Link>
                   <p>{review.username}</p>
                 </div>
+                {(review.rating === null) ? null : 
+                  <div className='review-stars'>
+                    <StarRatings
+                      rating={review.rating}
+                      starRatedColor="rgb(155, 1, 1)"
+                      starDimension="15px"
+                      starSpacing="0px"
+                    />
+                  </div>}
                 <p className='review-card-text'> 
                   {review.review}
                 </p>
@@ -61,6 +73,15 @@ class Movie extends Component {
       <div className='movie-card'>
         <img className='selected-poster' src={`https://image.tmdb.org/t/p/w500/${this.props.movie.selected.poster_path}`} alt={`${this.props.movie.selected.title} poster`}/>
         <h3 className='selected-title'>{this.props.movie.selected.title}</h3>
+        <div className='star-rating'>
+          <StarRatings
+            rating={+this.props.movie.avgRating}
+            starRatedColor="rgb(155, 1, 1)"
+            starDimension="30px"
+            starSpacing="5px"
+          />
+        </div>
+        <p>Ratings: ({+this.props.movie.totalReviews})</p>
         <p className='selected-summary'>{this.props.movie.selected.overview}</p>
       </div>
         <Link to={`/movie/${this.props.movie.selected.id}/reviewform`}><button>Add Review</button></Link>
@@ -74,4 +95,4 @@ class Movie extends Component {
 
 const mapStateToProps = state => state;
 
-export default connect(mapStateToProps, {getSpecific, getMovieReviews, getDbMovie, deleteReview, editReview})(Movie)
+export default connect(mapStateToProps, {getSpecific, getMovieReviews, getDbMovie, deleteReview, editReview, getAverage})(Movie)

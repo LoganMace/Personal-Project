@@ -9,7 +9,7 @@ const passport = require('passport');
 const port = process.env.PORT || 3001;
 const app = express();
 
-const { getPopular, getSpecific, searchMovie, getDbMovie } = require(`${__dirname}/controllers/movieCtrl`);
+const { getPopular, getSpecific, searchMovie, getDbMovie, getAverage } = require(`${__dirname}/controllers/movieCtrl`);
 const { strat, getUser, logout } = require(`${__dirname}/controllers/authCtrl`);
 const { editInterests, editUsername, editAvatar, getUserReviews, getUserById } = require(`${__dirname}/controllers/userCtrl`);
 const { addReview, getMovieReviews, deleteReview } = require(`${__dirname}/controllers/reviewCtrl`);
@@ -66,6 +66,7 @@ app.get('/api/profile/:id', getUserById);
 app.post('/api/review', addReview);
 app.get('/api/movie/reviews/:id', getMovieReviews);
 app.delete('/api/movie/reviews/:id', deleteReview);
+app.get('/api/movie/rating/:id', getAverage);
 
 app.post('/api/follow', addFollow);
 app.get('/api/follow/reviews/:id', getFollowReviews);

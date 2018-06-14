@@ -5,8 +5,22 @@
 }
 .profile-pic {
   height: 100px;
-  width: auto;
-  margin-right: 15px;
+  /* width: 100px; */
+  /* margin-right: 15px; */
+  /* border: solid 1px black;
+  border-radius: 5px; */
+}
+.pic-card {
+  position: relative;
+  display: flex;
+  float: left;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 100px;
+  width: 100px;
+  padding: 15px;
+  margin: 15px;
   border: solid 1px black;
   border-radius: 5px;
 }
@@ -29,16 +43,10 @@
   background-color: rgba(163, 3, 3, 0.486);
   border-radius: 5px;
 }
-.pic-card {
-  position: relative;
-  display: flex;
-  width: max-content;
-  float: left;
-  padding: 15px;
-}
 .pic-username {
   position: absolute;
-  bottom: 15px;
+  bottom: 0;
+  left: 0;
   background-color: rgba(0, 0, 0, 0.781);
   color: white;
 }

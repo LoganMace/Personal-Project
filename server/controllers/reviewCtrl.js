@@ -1,7 +1,7 @@
 function addReview(req, res, next) {
   const db = req.app.get('db');
   // console.log('add-review log', req.body);
-  const { review, userid, api_id, title, poster_path, overview } = req.body;
+  const { rating, review, userid, api_id, title, poster_path, overview } = req.body;
   db
   .movieInfo.get_movie([api_id])
     .then(response => {
@@ -17,7 +17,7 @@ function addReview(req, res, next) {
         return review.id
       });
       // console.log('map log------------     ', movie);
-      db.movieReview.add_review([review.input, userid, movie[movie.length-1], api_id]);
+      db.movieReview.add_review([rating, review.input, userid, movie[movie.length-1], api_id]);
     })
     .then(response => res.status(200).json())
     .catch(err => console.log(err));

@@ -12,6 +12,7 @@
 }
 .slider {
   position: absolute;
+  pointer-events: none;
   z-index: 50;
   height: 392px;
   width: 320px;

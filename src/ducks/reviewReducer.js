@@ -5,10 +5,10 @@ const GET_MOVIE_REVIEWS = 'GET_MOVIE_REVIEWS';
 const DELETE_REVIEW = 'DELETE_REVIEW';
 const EDIT_REVIEW = 'EDIT_REVIEW';
 
-export function addReview(title, poster_path, overview, review, userid, api_id) {
+export function addReview(title, poster_path, overview, rating, review, userid, api_id) {
   return {
     type: ADD_REVIEW,
-    payload: axios.post('/api/review', {title, poster_path, overview, review, userid, api_id})
+    payload: axios.post('/api/review', {title, poster_path, overview, rating, review, userid, api_id})
   };
 };
 

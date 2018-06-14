@@ -3,8 +3,8 @@ import axios from 'axios';
 
 const GET_POPULAR = 'GET_POPULAR';
 const GET_SPECIFIC = 'GET_SPECIFIC';
-// const SEARCH_MOVIE = 'SEARCH_MOVIE';
 const GET_DB_MOVIE = 'GET_DB_MOVIE';
+const GET_AVERAGE = 'GET_AVERAGE';
 
 
 export function getPopular() {
@@ -29,11 +29,20 @@ export function getDbMovie(id) {
   };
 };
 
+export function getAverage(id) {
+  return {
+    type: GET_AVERAGE,
+    payload: axios.get(`/api/movie/rating/${id}`)
+  }
+}
+
 
 const initialState = {
   popularMovies: [],
   selected: {},
-  savedMovie: {}
+  savedMovie: {},
+  avgRating: 0,
+  totalReviews: 0
 };
 
 
@@ -54,6 +63,12 @@ export default function movieReducer(state=initialState, action){
       return {
         ...state,
         savedMovie: action.payload.data
+      }
+    case `${GET_AVERAGE}_FULFILLED`:
+      return {
+        ...state,
+        avgRating: action.payload.data[0].round,
+        totalReviews: action.payload.data[0].count
       }
     default:
       return state;
