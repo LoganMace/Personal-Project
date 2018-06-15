@@ -70,39 +70,42 @@ class EditProfile extends Component {
   render() {
     // console.log(this.props);
     return (
-<div>
+      <div>
         {!this.props.user.isAuthed ? (
           <h1 className='login-message'>Log in to view profile!</h1>
         ) : (
           <div className='editprof-card'>
           <img className='avatar' src={this.props.user.user.avatar} alt="user-avatar"/>
           <div className='upload'>
-            <form>
-              <label>Avatar:</label>
+            <form className='upload-form'>
               {this.state.isUploading &&
                 <p>Progress: {this.state.progress}</p>
               }
-              <FileUploader
-                accept="image/*"
-                name="avatar"
-                randomizeFilename
-                storageRef={firebase.storage().ref('images')}
-                onUploadStart={this.handleUploadStart}
-                onUploadError={this.handleUploadError}
-                onUploadSuccess={this.handleUploadSuccess}
-                onProgress={this.handleProgress}
-              />
+              <label>
+              Select your avatar
+                <FileUploader
+                  hidden
+                  accept="image/*"
+                  name="avatar"
+                  randomizeFilename
+                  storageRef={firebase.storage().ref('images')}
+                  onUploadStart={this.handleUploadStart}
+                  onUploadError={this.handleUploadError}
+                  onUploadSuccess={this.handleUploadSuccess}
+                  onProgress={this.handleProgress}
+                />
+              </label>
             </form>
           </div>
-          <h3>UserName: {this.props.user.user.username}</h3>
+          <h3><span>UserName:</span> {this.props.user.user.username}</h3>
           <div className='username-bar'>
             <input type="text" onChange={(e)=>{this.inputUsernameHandler(e)}}/>
-            <button onClick={() => {this.submitUsernameHandler()}}>Submit</button>
+            <button className='sub-btn' onClick={() => {this.submitUsernameHandler()}}>Submit</button>
           </div>
-          <h4>Movie Interests:</h4>
+          <h3><span>Movie Interests:</span></h3>
           <div className='interests-bar'>
-            <input type="text" onChange={(e)=>{this.inputInterestsHandler(e)}}/>
-            <button onClick={() => {this.submitInterestsHandler()}}>Submit</button>
+            <textarea className='interests-form' type="text" onChange={(e)=>{this.inputInterestsHandler(e)}}/>
+            <button className='sub-btn' onClick={() => {this.submitInterestsHandler()}}>Submit</button>
           </div>
           <div className='interests'>{this.props.user.user.interests}</div>
         </div>

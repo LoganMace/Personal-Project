@@ -2,22 +2,67 @@
   margin: 50px auto 0 auto;
   height: 200px;
   width: auto;
+  border: solid 1px black;
+  border-radius: 5px;
 }
 .interests {
-  margin: 0 25px;
+  margin-bottom: 25px;
   text-align: left;
+  background: rgba(255, 255, 255, 0.26);
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 90%;
 }
 .username-bar {
   margin: 5px 0 25px 0;
+  width: 179px;
 }
 .interests-bar {
   margin: 5px 0 25px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .editprof-card {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: rgba(255, 255, 255, 0.26);
+  border-radius: 5px;
+  height: 100%;
+  width: 90vw;
+  margin: 20px auto 0 auto;
 }
 .upload {
-  margin: 15px 0 25px 0;
+  margin: 6px auto 25px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.interests-form {
+  width: 173px;
+  height: 63px;
+  margin-bottom: 1px;
+}
+.sub-btn {
+  height: 19px;
+  width: 55.5px;
+  border: solid 1px black;
+  border-radius: 5px;
+  background-color: rgba(155, 1, 1, 0.541);
+}
+.sub-btn:hover {
+  background-color: rgba(155, 1, 1, 0.747);
+}
+h3 span {
+  font-weight: bold;
+}
+label {
+  border: solid 1px black;
+  border-radius: 5px;
+  background: rgba(155, 1, 1, 0.541);
+  padding: 0 2px;
+}
+label:hover {
+  background-color: rgba(155, 1, 1, 0.747);
 }

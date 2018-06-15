@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt } from '@fortawesome/fontawesome-free-regular';
 import { faUserEdit } from '@fortawesome/fontawesome-free-solid';
+import StarRatings from 'react-star-ratings';
 
 import { getUser, getUserReviews } from '../../ducks/userReducer';
 import { deleteReview, editReview } from '../../ducks/reviewReducer';
@@ -36,10 +37,20 @@ class Profile extends Component {
 
     const reviewList = this.props.user.userReviews.map((review) => {
       return  <div className='movie-reviews' key={review.review_id}>
-                <img className='profile-review-poster' src={`https://image.tmdb.org/t/p/w92/${review.poster}`} alt={`${review.title} poster`}/>
-                <p className='review-card-text'>
+                <Link to={`/movie/${review.api_id}`}><img className='profile-review-poster' src={`https://image.tmdb.org/t/p/w92/${review.poster}`} alt={`${review.title} poster`}/></Link>
+                <p className='profile-review-text'>
                   {review.review}
                 </p>
+                {(review.rating === null) ? null : 
+                  <div className='review-stars'>
+                    <StarRatings
+                      rating={review.rating}
+                      starRatedColor="rgb(155, 1, 1)"
+                      starEmptyColor='rgb(203, 211, 227)'
+                      starDimension="15px"
+                      starSpacing="0px"
+                    />
+                  </div>}
                 <div className='review-buttons'>
                   {(review.user_id !== this.props.user.user.id) ? null : <button className='rv-btn'><FontAwesomeIcon icon={faEdit} /></button>}
                   {(review.user_id !== this.props.user.user.id) ? null : <button className='rv-btn' onClick={() => this.deleteHandler(review.review_id)}><FontAwesomeIcon icon={faTrashAlt} /></button>}

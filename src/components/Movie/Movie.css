@@ -1,13 +1,7 @@
-/* .movie-page {
-  background-image: url('../../images/felix-mooneeram-222805-unsplash.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-} */
 .movie-card {
-  background: rgba(255, 255, 255, 0.404);
+  background: rgba(255, 255, 255, 0.329);
   border-radius: 5px;
-  margin: 25px auto 0 auto;
+  margin: 25px auto;
   padding-top: 20px;
   padding-bottom: 5px;
   width: 90vw;
@@ -27,20 +21,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 3px;
 }
 .movie-reviews {
   border: solid 1px rgba(169, 169, 169, 0.459);
-  height: 100px;
-  width: 90vw;
-  margin-top: 10px;
+  height: max-content;
+  width: 100vw;
+  margin-top: 3px;
   display: flex;
-  align-items: center;
-  overflow: hidden;
+  justify-content: space-between;
+  /* align-items: center; */
+  /* overflow: hidden; */
   font-size: .9em;
   position: relative;
-  background: rgba(255, 255, 255, 0.404);
-  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.329);
+}
+.user-tag {
+  /* position: absolute;
+  top: 5px;
+  left: 5px; */
+  margin: 5px;
+  width: 50px;
 }
 .user-review-pic {
   height: 50px;
@@ -49,9 +50,12 @@
   border-radius: 50%;
   border: solid 1px black;
 }
-.user-tag {
-  margin: 0 15px 0 5px;
-  width: 50px;
+.user-tag p {
+  font-size: .8em;
+  border-radius: 5px;
+  font-weight: bolder;
+  /* background: rgba(255, 255, 255, 0.322);
+  padding: 3px; */
 }
 .review-stars {
   width: max-content;
@@ -60,15 +64,19 @@
   right: 5px;
 }
 .review-card-text {
-  margin-right: 28px;
-  height: 72px;
-  overflow: hidden;
+  margin: 18px 40px 18px 10px;
+  height: max-content;
+  width: 100%;
   text-align: left;
+  padding: 3px;
+  /* border: solid 1px black; */
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.26);
 }
 .review-buttons {
   position: absolute;
-  bottom: 0px;
-  right: 0;
+  bottom: 2px;
+  right: 2px;
   display: flex;
   flex-direction: column;
   width: 25px;
@@ -76,6 +84,10 @@
 .rv-btn {
   height: 25px;
   border: solid 1px black;
-  background-color: rgba(163, 3, 3, 0.486);
+  background-color: rgba(155, 1, 1, 0.541);
   border-radius: 5px;
+  font-weight: bolder;
+}
+.rv-btn:hover {
+  background-color: rgba(155, 1, 1, 0.747);
 }

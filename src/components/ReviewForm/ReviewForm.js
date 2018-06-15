@@ -69,7 +69,7 @@ class ReviewForm extends Component {
         </div>
         <form className='review-bar'  onSubmit={() => this.submitHandler()}>
           <textarea className='review-input' value={this.state.reviewForm.input} onChange={e => this.inputHandler(e)}/>
-          <button>Submit</button>
+          <button className='sub-btn'>Submit</button>
         </form>
       </div>
     )

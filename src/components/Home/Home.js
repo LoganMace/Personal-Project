@@ -4,6 +4,7 @@ import { getPopular } from '../../ducks/movieReducer';
 import { getUser } from '../../ducks/userReducer';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
+import StarRatings from 'react-star-ratings';
 
 import { getFollowReviews } from '../../ducks/followReducer';
 import "slick-carousel/slick/slick.css"; 
@@ -51,7 +52,19 @@ class Home extends Component {
                 <p className='follow-card-text'>
                   {review.review}
                 </p>
-                <Link to={`/movie/${review.api_id}`}><img className='follow-review-poster' src={`https://image.tmdb.org/t/p/w92/${review.poster}`} alt={`${review.title} poster`}/></Link>
+                <div className='poster-stars'>
+                  {(review.rating === null) ? null : 
+                    <div className='rv-stars'>
+                      <StarRatings
+                        rating={review.rating}
+                        starRatedColor="rgb(155, 1, 1)"
+                        starEmptyColor='rgb(203, 211, 227)'
+                        starDimension="15px"
+                        starSpacing="0px"
+                      />
+                    </div>}
+                  <Link to={`/movie/${review.api_id}`}><img className='follow-review-poster' src={`https://image.tmdb.org/t/p/w92/${review.poster}`} alt={`${review.title} poster`}/></Link>
+                </div>
               </div>
     });
 

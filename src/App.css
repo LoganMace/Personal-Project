@@ -1,17 +1,19 @@
-/* body {
+body {
   text-align: center;
   background-size: cover;
   min-height: 100vh;
-  background-image: url('./images/manos-gkikas-422953-unsplash.jpg');
+  background-image: url('./images/blurry-background-vactual-exclusive-hd-wallpaper-no-156-1920x1920.png');
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-position: center;
   position: relative;
-} */
-body {
+  font-family: 'Oswald', sans-serif;
+}
+/* body {
   text-align: center;
   background: linear-gradient(135deg, rgba(0,0,0,1) 0%,rgba(91,91,91,1) 50%,rgb(58, 58, 58) 99%);
   background-attachment: fixed;
-}
+} */
 /* body {
   text-align: center;
   background: linear-gradient(to right, #870000, #190a05);

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import StarRatings from 'react-star-ratings';
+import { Link } from 'react-router-dom';
 
 import { getUserReviews } from '../../ducks/userReducer';
 import { addFollow } from '../../ducks/followReducer';
@@ -19,7 +21,17 @@ class PublicProfile extends Component {
 
     const reviewList = this.props.user.userReviews.map((review) => {
       return  <div className='movie-reviews' key={review.review_id}>
-                <img className='profile-review-poster' src={`https://image.tmdb.org/t/p/w92/${review.poster}`} alt={`${review.title} poster`}/>
+                <Link to={`/movie/${review.api_id}`}><img className='profile-review-poster' src={`https://image.tmdb.org/t/p/w92/${review.poster}`} alt={`${review.title} poster`}/></Link>
+                {(review.rating === null) ? null : 
+                  <div className='review-stars'>
+                    <StarRatings
+                      rating={review.rating}
+                      starRatedColor="rgb(155, 1, 1)"
+                      starEmptyColor='rgb(203, 211, 227)'
+                      starDimension="15px"
+                      starSpacing="0px"
+                    />
+                  </div>}
                 <p className='review-card-text'>
                   {review.review}
                 </p>

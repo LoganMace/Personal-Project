@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 // import { faTrashAlt } from '@fortawesome/fontawesome-free-solid';
 import { faEdit, faTrashAlt } from '@fortawesome/fontawesome-free-regular';
-import StarRatings from 'react-star-ratings'
+import StarRatings from 'react-star-ratings';
 
 import { getSpecific, getDbMovie, getAverage } from '../../ducks/movieReducer';
 import { getMovieReviews, deleteReview, editReview } from '../../ducks/reviewReducer';
@@ -49,18 +49,21 @@ class Movie extends Component {
                   <Link to={`/profile/${review.user_id}`}><img className='user-review-pic' src={review.avatar} alt="user-avatar"/></Link>
                   <p>{review.username}</p>
                 </div>
-                {(review.rating === null) ? null : 
-                  <div className='review-stars'>
-                    <StarRatings
-                      rating={review.rating}
-                      starRatedColor="rgb(155, 1, 1)"
-                      starDimension="15px"
-                      starSpacing="0px"
-                    />
-                  </div>}
                 <p className='review-card-text'> 
                   {review.review}
                 </p>
+                <div className='poster-stars'>
+                  {(review.rating === null) ? null : 
+                    <div className='review-stars'>
+                      <StarRatings
+                        rating={review.rating}
+                        starRatedColor="rgb(155, 1, 1)"
+                        starEmptyColor='rgb(203, 211, 227)'
+                        starDimension="15px"
+                        starSpacing="0px"
+                      />
+                    </div>}
+                </div>
                 <div className='review-buttons'>
                   {(review.user_id !== this.props.user.user.id) ? null : <button className='rv-btn'><FontAwesomeIcon icon={faEdit} /></button>}
                   {(review.user_id !== this.props.user.user.id) ? null : <button className='rv-btn' onClick={() => this.deleteHandler(review.review_id)}><FontAwesomeIcon icon={faTrashAlt} /></button>}
@@ -77,14 +80,15 @@ class Movie extends Component {
           <StarRatings
             rating={+this.props.movie.avgRating}
             starRatedColor="rgb(155, 1, 1)"
+            starEmptyColor='rgb(203, 211, 227)'
             starDimension="30px"
             starSpacing="5px"
           />
         </div>
         <p>Ratings: ({+this.props.movie.totalReviews})</p>
         <p className='selected-summary'>{this.props.movie.selected.overview}</p>
+        <Link to={`/movie/${this.props.movie.selected.id}/reviewform`}><button className='rv-btn'>Add Review</button></Link>
       </div>
-        <Link to={`/movie/${this.props.movie.selected.id}/reviewform`}><button>Add Review</button></Link>
         <div className='movie-reviews-list'>
           {reviewList}
         </div>
