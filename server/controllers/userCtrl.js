@@ -45,10 +45,18 @@ function getUserById(req, res, next) {
     .catch(err => console.log(err));
 };
 
+function getTotal(req, res, next) {
+  req.app.get('db')
+    .userInfo.get_total([req.params.id])
+    .then(response => res.status(200).json(response))
+    .catch(err => console.log(err));
+};
+
 module.exports = {
   editInterests,
   editUsername,
   editAvatar,
   getUserReviews,
-  getUserById
+  getUserById,
+  getTotal
 }

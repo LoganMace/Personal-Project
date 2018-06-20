@@ -15,9 +15,13 @@ nav {
 }
 .nav-buttons {
   margin-right: 15px;
+  padding: 3px;
 }
 .nav-buttons a {
   text-decoration: none;
   color: black;
   font-weight: bolder;
 }
+/* .nav-buttons:hover {
+  background: rgba(255, 255, 255, 0.329);
+} */

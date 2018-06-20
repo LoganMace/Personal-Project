@@ -1,4 +1,4 @@
 UPDATE review
 SET review = $1
-WHERE id = $2
+WHERE review_id = $2
 RETURNING *;

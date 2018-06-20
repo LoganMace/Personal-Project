@@ -1,0 +1,1 @@
+SELECT * FROM relation WHERE follower = $1 AND following = $2;

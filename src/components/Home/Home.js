@@ -71,6 +71,7 @@ class Home extends Component {
     return (
       <div className='home-box'>
         <div className='card-box'>
+        <h1 className='now-playing'>Now Playing</h1>
           <div className='slider'>
           </div>
           <Slider {...settings}>

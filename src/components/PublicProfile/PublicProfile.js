@@ -3,17 +3,38 @@ import { connect } from 'react-redux';
 import StarRatings from 'react-star-ratings';
 import { Link } from 'react-router-dom';
 
-import { getUserReviews } from '../../ducks/userReducer';
-import { addFollow } from '../../ducks/followReducer';
+import { getUserReviews, getTotal } from '../../ducks/userReducer';
+import { addFollow, getFollowList, deleteFollow, followCheck } from '../../ducks/followReducer';
+import './PublicProfile.css';
 
 class PublicProfile extends Component {
 
+  constructor(){
+    super();
+    this.state = {
+      clicked: false
+    }
+    this.followHandler = this.followHandler.bind(this);
+    this.unFollowHandler = this.unFollowHandler.bind(this);
+  }
+
   componentDidMount() {
+    this.props.followCheck(this.props.user.user.id, this.props.match.params.id);
+    this.props.getFollowList(this.props.user.user.id);
     this.props.getUserReviews(this.props.match.params.id);
+    this.props.getTotal(this.props.match.params.id);
   };
 
   followHandler(userid, followid) {
-    this.props.addFollow(userid, followid);
+    this.props.addFollow(userid, followid).then(() => this.setState({
+        clicked: !this.state.clicked
+      })).then(()=>this.props.followCheck(this.props.user.user.id, this.props.match.params.id));
+  };
+
+  unFollowHandler() {
+    this.props.deleteFollow(this.props.user.user.id).then(() => this.setState({
+        clicked: !this.state.clicked
+      })).then(()=>this.props.followCheck(this.props.user.user.id, this.props.match.params.id));
   };
 
   render() {
@@ -45,8 +66,10 @@ class PublicProfile extends Component {
                   <img className='profile-pic' src={profile.avatar} alt="user-avatar"/>
                   <p className='pic-username'>{profile.username}</p>
                 </div>
-                <button onClick={() => this.followHandler(this.props.user.user.id, this.props.match.params.id)}>Follow</button>
-                <p className='profile-interests'>Movie Interests: <br/><br/>{profile.interests}</p>
+                {(this.props.follow.followCheck) ? <button className='follow-btn' onClick={() => this.unFollowHandler()}>UnFollow</button> : <button className='follow-btn' onClick={() => this.followHandler(this.props.user.user.id, this.props.match.params.id)}>Follow</button>}
+                <h1 className='review-count'>Reviews Made({this.props.user.reviewCount})</h1>
+                <p className='profile-interests'><span>Movie Interests:</span></p>
+                <p className='profile-interests'>{profile.interests}</p>
               </div>
     });  
 
@@ -63,4 +86,4 @@ class PublicProfile extends Component {
 
 const mapStateToProps = state => state;
 
-export default connect(mapStateToProps, {getUserReviews, addFollow})(PublicProfile);
+export default connect(mapStateToProps, {getUserReviews, addFollow, getTotal, getFollowList, deleteFollow, followCheck})(PublicProfile);

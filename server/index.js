@@ -11,9 +11,9 @@ const app = express();
 
 const { getPopular, getSpecific, searchMovie, getDbMovie, getAverage } = require(`${__dirname}/controllers/movieCtrl`);
 const { strat, getUser, logout } = require(`${__dirname}/controllers/authCtrl`);
-const { editInterests, editUsername, editAvatar, getUserReviews, getUserById } = require(`${__dirname}/controllers/userCtrl`);
-const { addReview, getMovieReviews, deleteReview } = require(`${__dirname}/controllers/reviewCtrl`);
-const { addFollow, getFollowReviews } = require(`${__dirname}/controllers/followCtrl`);
+const { editInterests, editUsername, editAvatar, getUserReviews, getUserById, getTotal } = require(`${__dirname}/controllers/userCtrl`);
+const { addReview, getMovieReviews, deleteReview, editReview } = require(`${__dirname}/controllers/reviewCtrl`);
+const { addFollow, getFollowReviews, getFollowList, deleteFollow, getFollowCheck } = require(`${__dirname}/controllers/followCtrl`);
 
 massive(process.env.CONNECTION_STRING)
   .then(db => app.set('db', db))
@@ -62,14 +62,19 @@ app.put('/api/editusername/:id', editUsername);
 app.put('/api/editavatar/:id', editAvatar);
 app.get('/api/user/reviews/:id', getUserReviews);
 app.get('/api/profile/:id', getUserById);
+app.get('/api/totalreviews/:id', getTotal);
 
 app.post('/api/review', addReview);
 app.get('/api/movie/reviews/:id', getMovieReviews);
 app.delete('/api/movie/reviews/:id', deleteReview);
+app.put('/api/movie/reviews/:id', editReview);
 app.get('/api/movie/rating/:id', getAverage);
 
 app.post('/api/follow', addFollow);
 app.get('/api/follow/reviews/:id', getFollowReviews);
+app.get('/api/followlist/:id', getFollowList);
+app.delete('/api/follow/:id', deleteFollow);
+app.post('/api/followcheck', getFollowCheck);
 
 app.get('/login',
   passport.authenticate('auth0', {

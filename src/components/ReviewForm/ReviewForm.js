@@ -46,8 +46,8 @@ class ReviewForm extends Component {
   submitHandler() {
     const { user, match } = this.props;
     const { title, poster_path, overview } = this.props.movie.selected;
-    this.props.addReview(title, poster_path, overview, this.state.reviewForm.rating, this.state.reviewForm, user.user.id, match.params.id);
-    this.props.history.push(`/movie/${this.props.match.params.id}`);
+    this.props.addReview(title, poster_path, overview, this.state.reviewForm.rating, this.state.reviewForm, user.user.id, match.params.id)
+      .then(() => this.props.history.push(`/movie/${this.props.match.params.id}`));
   };
 
   render() {

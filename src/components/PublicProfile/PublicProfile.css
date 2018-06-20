@@ -1,0 +1,14 @@
+.follow-btn {
+  border: solid 1px black;
+  background-color: rgba(163, 3, 3, 0.486);
+  border-radius: 5px;
+  font-weight: bold;
+  position: absolute;
+  right: 1px;
+}
+.follow-btn:hover {
+  background-color: rgba(155, 1, 1, 0.747);
+}
+p span {
+  font-weight: bold;
+}

@@ -36,7 +36,8 @@ class Search extends Component {
   };
 
   submitHandler(e){
-    if(e.key === 'Enter'){
+    // console.log(e.target.value);
+    if(e.key === 'Enter' || e.target.value !== this.state.input){
       if(this.state.input !== ''){
         axios
           .get(`https://api.themoviedb.org/3/search/movie?${apiKey}&language=en-US&query=${this.state.input}&page=1&include_adult=false`)
@@ -71,10 +72,8 @@ class Search extends Component {
     return (
       <div>
         <div className='search-bar'>
-          {/* <form onSubmit={()=>{this.submitHandler()}}> */}
             <input onKeyPress={(e)=>{this.submitHandler(e)}} className='search-input' type="text" value={this.state.input} onChange={(e)=>{this.searchHandler(e)}}/>
-            <button onClick={()=>{this.submitHandler()}} className='search-button'><FontAwesomeIcon icon={faSearch} /></button>
-          {/* </form> */}
+            <button onClick={(e)=>{this.submitHandler(e)}} className='search-button'><FontAwesomeIcon icon={faSearch} /></button>
         </div>
         {(this.state.isOpen) ? ((this.state.results.length > 0) ? <div ref='box' className='results-box'>{searchResults}</div> : null) : null}
         

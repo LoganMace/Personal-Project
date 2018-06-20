@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import firebase from '../../firebase';
 import FileUploader from 'react-firebase-file-uploader';
 
-import { getUser, editInterests, editUsername, editAvatar } from '../../ducks/userReducer';
+import { editInterests, editUsername, editAvatar } from '../../ducks/userReducer';
 import './EditProfile.css';
 
 class EditProfile extends Component {
@@ -24,9 +24,9 @@ class EditProfile extends Component {
     this.submitInterestsHandler = this.submitInterestsHandler.bind(this);
   }
 
-  componentDidMount() {
-    this.props.getUser();
-  };
+  // componentDidMount() {
+  //   this.props.getUser();
+  // };
 
   inputUsernameHandler(e) {
     this.setState({
@@ -117,4 +117,4 @@ class EditProfile extends Component {
 
 const mapStateToProps = state => state;
 
-export default connect(mapStateToProps, {getUser, editInterests, editUsername, editAvatar})(EditProfile);
+export default connect(mapStateToProps, {editInterests, editUsername, editAvatar})(EditProfile);

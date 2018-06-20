@@ -38,15 +38,17 @@ function deleteReview(req, res, next) {
     .catch(err => console.log(err));
 };
 
-// function editReview(req, res, next) {
-//   req.app.get('db')
-//     .movieReview.edit_review([req.body.review, req.params.id])
-//     .then(response => res.status(200).json(response))
-//     .catch(err => console.log(err));
-// };
+function editReview(req, res, next) {
+  // console.log(req.params);
+  req.app.get('db')
+    .movieReview.edit_review([req.body.review, req.params.id])
+    .then(response => res.status(200).json(response))
+    .catch(err => console.log(err));
+};
 
 module.exports = {
   addReview,
   getMovieReviews,
-  deleteReview
+  deleteReview,
+  editReview
 };

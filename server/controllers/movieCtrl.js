@@ -4,7 +4,7 @@ const {apiKey} = require('../../src/key');
 
 function getPopular(req, res , next) {
   axios
-    .get(`https://api.themoviedb.org/3/movie/now_playing?${apiKey}&language=en-US&page=1`)
+    .get(`https://api.themoviedb.org/3/movie/now_playing?${apiKey}&language=en-US&page=1&region=US`)
     .then(response => res.status(200).json(response.data.results))
     .catch(err => console.log(err));
 };

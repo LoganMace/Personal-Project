@@ -1,7 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom'
 
-// import Login from './components/Login/Login';
 import Home from './components/Home/Home';
 import EditProfile from './components/EditProfile/EditProfile';
 import Movie from './components/Movie/Movie';
@@ -13,7 +12,6 @@ import PublicProfile from './components/PublicProfile/PublicProfile';
 
 export default (
   <Switch>
-    {/* <Route component={Login} exact path={'/'}/> */}
     <Route component={Home} exact path={'/'}/>
     <Route component={EditProfile} path={'/editprofile'}/>
     <Route component={PublicProfile} path={'/profile/:id'}/>

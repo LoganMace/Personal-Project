@@ -39,12 +39,16 @@
   background-color: rgba(163, 3, 3, 0.486);
   border-radius: 5px;
 }
+.edit-profile:hover {
+  background-color: rgba(155, 1, 1, 0.747);
+}
 .pic-username {
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.781);
+  background-color: rgba(0, 0, 0, 0.603);
   color: white;
+  padding: 3px;;
 }
 .profile-review-list {
   display: flex;
@@ -73,4 +77,8 @@
   color: white;
   margin-top: 25px;
   font-size: 25px;
+}
+.review-count {
+  text-align: left;
+  font-weight: bold;
 }
