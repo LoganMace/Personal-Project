@@ -134,7 +134,7 @@ class Movie extends Component {
 
 
   render() {
-    console.log('PROPS!!!   ', this.props);
+    // console.log('PROPS!!!   ', this.props);
     // console.log('STATE!!!   ', this.state);
     // console.log('ghost   ', this);
 

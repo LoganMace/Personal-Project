@@ -7,6 +7,7 @@ import Movie from './components/Movie/Movie';
 import Profile from './components/Profile/Profile';
 import ReviewForm from './components/ReviewForm/ReviewForm';
 import PublicProfile from './components/PublicProfile/PublicProfile';
+import Following from './components/Following/Following';
 
 
 
@@ -18,6 +19,6 @@ export default (
     <Route component={Profile} path={'/profile'}/>
     <Route component={ReviewForm} path={'/movie/:id/reviewform'}/>
     <Route component={Movie} path={'/movie/:id'}/>
-    {/* <Route component={Review} path={'/'}/> */}
+    <Route component={Following} path={'/following'}/>
   </Switch>
 );

@@ -6001,6 +6001,10 @@ react-firebase-file-uploader@^2.4.1:
   dependencies:
     uuid "^2.0.3"
 
+react-hamburger-button@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/react-hamburger-button/-/react-hamburger-button-0.0.1.tgz#37e0141a4caa19ca68a7e1eb595a5d8c0d154915"
+
 react-redux@^5.0.7:
   version "5.0.7"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.7.tgz#0dc1076d9afb4670f993ffaef44b8f8c1155a4c8"

@@ -5,6 +5,7 @@ const GET_FOLLOW_REVIEWS = 'GET_FOLLOW_REVIEWS';
 const GET_FOLLOW_LIST = 'GET_FOLLOW_LIST';
 const DELETE_FOLLOW ='DELETE_FOLLOW';
 const FOLLOW_CHECK = 'FOLLOW_CHECK';
+const GET_FOLLOW_USERS = 'GET_FOLLOW_USERS';
 
 export function addFollow(userid, followid) {
   return {
@@ -25,10 +26,10 @@ export function getFollowList(id) {
     payload: axios.get(`/api/followlist/${id}`) 
   };
 };
-export function deleteFollow(id) {
+export function deleteFollow(follower, following) {
   return {
     type: DELETE_FOLLOW,
-    payload: axios.delete(`/api/follow/${id}`)
+    payload: axios.post(`/api/followdelete`, {follower, following})
   };
 };
 export function followCheck(follower, following) {
@@ -37,11 +38,18 @@ export function followCheck(follower, following) {
     payload: axios.post(`/api/followcheck/`, {follower, following})
   };
 };
+export function getFollowUsers(id) {
+  return {
+    type: GET_FOLLOW_USERS,
+    payload: axios.get(`/api/following/${id}`)
+  };
+};
 
 const initialState = {
   followCheck: {},
   followList: [],
-  followReviews: []
+  followReviews: [],
+  following: []
 };
 
 export default function followReducer(state=initialState, action) {
@@ -70,6 +78,11 @@ export default function followReducer(state=initialState, action) {
     case `${DELETE_FOLLOW}_FULFILLED`:
       return {
         ...state
+      };
+    case `${GET_FOLLOW_USERS}_FULFILLED`:
+      return {
+        ...state,
+        following: action.payload.data
       };
     default:
       return state;

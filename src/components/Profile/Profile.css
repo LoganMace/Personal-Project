@@ -36,11 +36,12 @@
   top: 5px;
   right: 5px;
   border: solid 1px black;
-  background-color: rgba(163, 3, 3, 0.486);
+  background-color: rgba(155, 1, 1, 0.747);
   border-radius: 5px;
 }
 .edit-profile:hover {
-  background-color: rgba(155, 1, 1, 0.747);
+  background-color: rgba(163, 3, 3, 0.486);
+  box-shadow: 0px 0px 15px  black;
 }
 .pic-username {
   position: absolute;
@@ -57,21 +58,24 @@
   margin-bottom: 3px;
 }
 .profile-review-text {
-  margin: 18px 35px 18px 7px;
+  margin: 18px 50px 18px 7px;
   height: max-content;
   width: 100%;
   text-align: left;
   padding: 3px;
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.26);
+  white-space: pre;
 }
 .profile-review-poster {
   height: 100px;
   margin: 2px;
+  margin-left: 10px;
   width: auto;
   border: solid 1px black;
   border-radius: 5px;
   overflow: hidden;
+  box-shadow: 0px 0px 15px 1px black;
 }
 .login-message {
   color: white;
@@ -81,4 +85,5 @@
 .review-count {
   text-align: left;
   font-weight: bold;
+  margin-top: 15px;
 }

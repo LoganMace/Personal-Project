@@ -11,9 +11,9 @@ const app = express();
 
 const { getPopular, getSpecific, searchMovie, getDbMovie, getAverage } = require(`${__dirname}/controllers/movieCtrl`);
 const { strat, getUser, logout } = require(`${__dirname}/controllers/authCtrl`);
-const { editInterests, editUsername, editAvatar, getUserReviews, getUserById, getTotal } = require(`${__dirname}/controllers/userCtrl`);
+const { editInterests, editUsername, editAvatar, getUserReviews, getUserById, getTotal, updateReviewCount, searchUser } = require(`${__dirname}/controllers/userCtrl`);
 const { addReview, getMovieReviews, deleteReview, editReview } = require(`${__dirname}/controllers/reviewCtrl`);
-const { addFollow, getFollowReviews, getFollowList, deleteFollow, getFollowCheck } = require(`${__dirname}/controllers/followCtrl`);
+const { addFollow, getFollowReviews, getFollowList, deleteFollow, getFollowCheck, getFollowUsers } = require(`${__dirname}/controllers/followCtrl`);
 
 massive(process.env.CONNECTION_STRING)
   .then(db => app.set('db', db))
@@ -21,6 +21,11 @@ massive(process.env.CONNECTION_STRING)
 
 app.use(cors());
 app.use(json());
+app.use( express.static( `${__dirname}/../build` ) );
+
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -61,8 +66,10 @@ app.put('/api/editinterests/:id', editInterests);
 app.put('/api/editusername/:id', editUsername);
 app.put('/api/editavatar/:id', editAvatar);
 app.get('/api/user/reviews/:id', getUserReviews);
-app.get('/api/profile/:id', getUserById);
+app.get('/api/user/:id', getUserById);
 app.get('/api/totalreviews/:id', getTotal);
+app.get('/api/reviewcount', updateReviewCount);
+app.get('/api/user/search/:name', searchUser);
 
 app.post('/api/review', addReview);
 app.get('/api/movie/reviews/:id', getMovieReviews);
@@ -73,13 +80,16 @@ app.get('/api/movie/rating/:id', getAverage);
 app.post('/api/follow', addFollow);
 app.get('/api/follow/reviews/:id', getFollowReviews);
 app.get('/api/followlist/:id', getFollowList);
-app.delete('/api/follow/:id', deleteFollow);
+app.post('/api/followdelete', deleteFollow);
 app.post('/api/followcheck', getFollowCheck);
+app.get('/api/following/:id', getFollowUsers);
 
 app.get('/login',
   passport.authenticate('auth0', {
     successRedirect: 'http://localhost:3000/#/',
     failureRedirect: 'http://localhost:3001/login'
+    // successRedirect: '/#/',
+    // failureRedirect: '/login'
   })
 );
 

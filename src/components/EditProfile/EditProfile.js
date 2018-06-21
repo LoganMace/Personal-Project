@@ -75,7 +75,9 @@ class EditProfile extends Component {
           <h1 className='login-message'>Log in to view profile!</h1>
         ) : (
           <div className='editprof-card'>
-          <img className='avatar' src={this.props.user.user.avatar} alt="user-avatar"/>
+          <div className='edit-avatar-box'>
+            <img className='avatar' src={this.props.user.user.avatar} alt="user-avatar"/>
+          </div>
           <div className='upload'>
             <form className='upload-form'>
               {this.state.isUploading &&

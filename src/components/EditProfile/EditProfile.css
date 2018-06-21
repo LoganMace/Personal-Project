@@ -1,9 +1,16 @@
-.avatar {
-  margin: 50px auto 0 auto;
+.edit-avatar-box {
   height: 200px;
-  width: auto;
+  width: 200px;
+  overflow: hidden;
   border: solid 1px black;
   border-radius: 5px;
+  margin: 50px auto 0 auto;
+  display: flex;
+  justify-content: center;
+}
+.avatar {
+  height: 200px;
+  width: auto;
 }
 .interests {
   margin-bottom: 25px;
@@ -49,10 +56,11 @@
   width: 55.5px;
   border: solid 1px black;
   border-radius: 5px;
-  background-color: rgba(155, 1, 1, 0.541);
+  background-color: rgba(155, 1, 1, 0.747);
 }
 .sub-btn:hover {
-  background-color: rgba(155, 1, 1, 0.747);
+  background-color: rgba(155, 1, 1, 0.541);
+  box-shadow: 0px 0px 15px  black;
 }
 h3 span {
   font-weight: bold;
@@ -60,10 +68,11 @@ h3 span {
 label {
   border: solid 1px black;
   border-radius: 5px;
-  background: rgba(155, 1, 1, 0.541);
+  background: rgba(155, 1, 1, 0.747);
   padding: 0 2px;
   cursor: pointer;
 }
 label:hover {
-  background-color: rgba(155, 1, 1, 0.747);
+  background-color: rgba(155, 1, 1, 0.541);
+  box-shadow: 0px 0px 15px  black;
 }

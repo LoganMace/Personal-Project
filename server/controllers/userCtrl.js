@@ -52,11 +52,28 @@ function getTotal(req, res, next) {
     .catch(err => console.log(err));
 };
 
+function updateReviewCount(req, res, next) {
+  req.app.get('db')
+    .userInfo.update_reviewCount()
+    .then(response => res.status(200).json(response))
+    .catch(err => console.log(err));
+};
+
+function searchUser(req, res, next) {
+  // console.log(req.params);
+  req.app.get('db')
+    .userInfo.search_user(req.params.name)
+    .then(response => res.status(200).json(response))
+    .catch(err => console.log(err));
+};
+
 module.exports = {
   editInterests,
   editUsername,
   editAvatar,
   getUserReviews,
   getUserById,
-  getTotal
+  getTotal,
+  updateReviewCount,
+  searchUser
 }

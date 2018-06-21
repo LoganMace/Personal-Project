@@ -79,7 +79,7 @@ class Home extends Component {
           </Slider>
         </div>
         <div className='timeline'>
-          <div className='movie-reviews-list'>
+          <div className='home-reviews-list'>
             {followReviews}
           </div>
         </div>

@@ -1,0 +1,57 @@
+.following-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.follow-total {
+  background: rgba(255, 255, 255, 0.329);
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 20px;
+}
+.follow-list {
+  width: 300px;
+  margin-top: 3px;
+}
+.following-card {
+  background: rgba(255, 255, 255, 0.329);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3px;
+  font-weight: bold;
+}
+.following-avatar {
+  height: 50px;
+  width: 50px;
+  margin: 3px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: solid 1px black;
+  box-shadow: 0px 0px 5px black;
+}
+.following-count {
+  margin-right: 10px;
+}
+.link-wrap a {
+  text-decoration: none;
+  color: black;
+}
+.search-user-bar {
+  margin-top: 20px;
+}
+.user-results-box {
+  width: 300px;
+  margin-top: 3px;
+}
+.user-results-card {
+  background: rgba(255, 255, 255, 0.329);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3px;
+  font-weight: bold;
+}

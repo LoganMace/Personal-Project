@@ -22,7 +22,7 @@ class ReviewForm extends Component {
   }
 
   componentDidMount() {
-    this.props.getSpecific();
+    this.props.getSpecific(this.props.match.params.id);
   };
 
   changeRating( newRating, name ) {
@@ -46,12 +46,11 @@ class ReviewForm extends Component {
   submitHandler() {
     const { user, match } = this.props;
     const { title, poster_path, overview } = this.props.movie.selected;
-    this.props.addReview(title, poster_path, overview, this.state.reviewForm.rating, this.state.reviewForm, user.user.id, match.params.id)
-      .then(() => this.props.history.push(`/movie/${this.props.match.params.id}`));
+    this.props.addReview(title, poster_path, overview, this.state.reviewForm.rating, this.state.reviewForm, user.user.id, match.params.id).then(() => this.props.history.push(`/movie/${this.props.match.params.id}`));
   };
 
   render() {
-    // console.log(this.state);
+    console.log(this.props);
     return (
       <div className='review-form'>
         {this.props.movie.selected.poster_path !== undefined ? (<img className='review-poster' src={`https://image.tmdb.org/t/p/w500/${this.props.movie.selected.poster_path}`} alt={`${this.props.movie.selected.title} poster`}/>) : null}
@@ -67,10 +66,10 @@ class ReviewForm extends Component {
             starSpacing="5px"
           />
         </div>
-        <form className='review-bar'  onSubmit={() => this.submitHandler()}>
+        <div className='review-bar'>
           <textarea className='review-input' value={this.state.reviewForm.input} onChange={e => this.inputHandler(e)}/>
-          <button className='sub-btn'>Submit</button>
-        </form>
+          <button className='sub-btn' onClick={() => this.submitHandler()}>Submit</button>
+        </div>
       </div>
     )
   }

@@ -21,8 +21,9 @@ function getFollowList(req, res, next) {
   .catch(err => console.log(err));
 };
 function deleteFollow(req, res, next) {
+  console.log(req.body);
   req.app.get('db')
-  .followInfo.delete_follow([req.params.id])
+  .followInfo.delete_follow([req.body.follower, req.body.following])
   .then(response => res.status(200).json(response))
   .catch(err => console.log(err));
 };
@@ -32,11 +33,18 @@ function getFollowCheck(req, res, next) {
   .then(response => res.status(200).json(response))
   .catch(err => console.log(err));
 };
+function getFollowUsers(req, res, next) {
+  req.app.get('db')
+  .followInfo.get_followUsers([req.params.id])
+  .then(response => res.status(200).json(response))
+  .catch(err => console.log(err));
+}
 
 module.exports = {
   addFollow,
   getFollowReviews,
   getFollowList,
   deleteFollow,
-  getFollowCheck
+  getFollowCheck,
+  getFollowUsers
 };

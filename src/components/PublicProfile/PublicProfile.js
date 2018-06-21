@@ -32,13 +32,13 @@ class PublicProfile extends Component {
   };
 
   unFollowHandler() {
-    this.props.deleteFollow(this.props.user.user.id).then(() => this.setState({
+    this.props.deleteFollow(this.props.user.user.id, this.props.match.params.id).then(() => this.setState({
         clicked: !this.state.clicked
       })).then(()=>this.props.followCheck(this.props.user.user.id, this.props.match.params.id));
   };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
 
     const reviewList = this.props.user.userReviews.map((review) => {
       return  <div className='movie-reviews' key={review.review_id}>
