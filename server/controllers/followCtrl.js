@@ -2,7 +2,7 @@ function addFollow(req, res, next) {
   // console.log('folow test!!!!!!!!!!!!    ', req.body);
   req.app.get('db')
   .followInfo.add_follow([req.body.userid, req.body.followid])
-  .then(response => res.status(200).json())
+  .then(response => res.status(200).json(response))
   .catch(err => console.log(err));
 };
 function getFollowReviews(req, res, next) {
