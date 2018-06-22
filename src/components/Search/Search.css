@@ -1,13 +1,13 @@
 .results-box {
-  width: 250px;
-  height: 200px;
+  width: 200px;
+  height: 125px;
   overflow: scroll;
   margin: 0 auto;
-  border: solid 1px gray;
+  /* border: solid 1px gray; */
   position: absolute;
   top: 49px;
   right: 0;
-  background: rgba(104, 1, 1, 0.904);
+  background: rgba(155, 1, 1, 0.95);
 }
 .search-results {
   margin-top: 10px;

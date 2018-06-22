@@ -14,9 +14,11 @@ class Header extends Component {
   constructor() {
     super();
     this.state = {
-      open: false
+      open: false,
+      refresh: true
     }
     this.handleClick = this.handleClick.bind(this);
+    this.handleNav = this.handleNav.bind(this);
   }
 
   componentDidMount() {
@@ -25,7 +27,14 @@ class Header extends Component {
 
   handleClick() {
     this.setState({
-      open: !this.state.open
+      open: !this.state.open,
+      refresh: false
+    });
+  };
+
+  handleNav() {
+    this.setState ({
+      open: false
     });
   };
 
@@ -41,14 +50,14 @@ class Header extends Component {
               width={18}
               height={15}
               strokeWidth={2}
-              color='black'
+              color='white'
               animationDuration={0.5}
             />
           </div>
           <Search />
         </nav>
         {/* {(!this.state.open) ? null :  */}
-        <ul className={'nav-links ' + (this.state.open ? 'slide' : '')}>
+        <ul onClick={() => this.handleNav()} className={'nav-links ' + (this.state.open ? 'slide' : '') + (!this.state.open && !this.state.refresh ? 'slide-back' : '')}>
           <li className='nav-buttons'><Link to='/'>Home</Link></li>
           <li className='nav-buttons'><Link to='/profile'>Profile</Link></li>
           <li className='nav-buttons'><Link to='/following'>Following</Link></li>
