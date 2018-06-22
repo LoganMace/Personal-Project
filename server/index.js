@@ -21,11 +21,11 @@ massive(process.env.CONNECTION_STRING)
 
 app.use(cors());
 app.use(json());
-// app.use( express.static( `${__dirname}/../build` ) );
+app.use( express.static( `${__dirname}/../build` ) );
 
-// app.get('*', (req, res)=>{
-//     res.sendFile(path.join(__dirname, '../build/index.html'));
-// });
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -86,10 +86,10 @@ app.get('/api/following/:id', getFollowUsers);
 
 app.get('/login',
   passport.authenticate('auth0', {
-    successRedirect: 'http://localhost:3000/#/',
-    failureRedirect: 'http://localhost:3001/login'
-    // successRedirect: '/#/',
-    // failureRedirect: '/login'
+    // successRedirect: 'http://localhost:3000/#/',
+    // failureRedirect: 'http://localhost:3001/login'
+    successRedirect: '/#/',
+    failureRedirect: '/login'
   })
 );
 
