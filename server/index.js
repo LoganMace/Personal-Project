@@ -76,7 +76,7 @@ app.delete('/api/movie/reviews/:id', deleteReview);
 app.put('/api/movie/reviews/:id', editReview);
 app.get('/api/movie/rating/:id', getAverage);
 
-app.post('/api/follow', addFollow);
+app.post('/api/followadd', addFollow);
 app.get('/api/follow/reviews/:id', getFollowReviews);
 app.get('/api/followlist/:id', getFollowList);
 app.post('/api/followdelete', deleteFollow);

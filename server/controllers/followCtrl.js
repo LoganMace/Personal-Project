@@ -21,7 +21,7 @@ function getFollowList(req, res, next) {
   .catch(err => console.log(err));
 };
 function deleteFollow(req, res, next) {
-  console.log(req.body);
+  // console.log(req.body);
   req.app.get('db')
   .followInfo.delete_follow([req.body.follower, req.body.following])
   .then(response => res.status(200).json(response))

@@ -10,7 +10,7 @@ const GET_FOLLOW_USERS = 'GET_FOLLOW_USERS';
 export function addFollow(userid, followid) {
   return {
     type: ADD_FOLLOW,
-    payload: axios.post('/api/follow', {userid, followid})
+    payload: axios.post('/api/followadd', {userid, followid})
   };
 };
 export function getFollowReviews(id) {
