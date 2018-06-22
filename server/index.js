@@ -8,6 +8,7 @@ const passport = require('passport');
 
 const port = process.env.PORT || 3001;
 const app = express();
+const path = require('path');
 
 const { getPopular, getSpecific, searchMovie, getDbMovie, getAverage } = require(`${__dirname}/controllers/movieCtrl`);
 const { strat, getUser, logout } = require(`${__dirname}/controllers/authCtrl`);
