@@ -57,7 +57,7 @@ class Following extends Component {
   };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
 
     const followList = this.props.following.map((user) => {
       return (

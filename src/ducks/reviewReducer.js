@@ -46,7 +46,7 @@ const initialState = {
 };
 
 export default function reviewReducer(state=initialState, action){
-console.log(action.type);
+// console.log(action.type);
   switch (action.type) {
     case `${ADD_REVIEW}_FULFILLED`:
       return {
