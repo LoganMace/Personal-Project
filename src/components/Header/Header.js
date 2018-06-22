@@ -56,7 +56,6 @@ class Header extends Component {
           </div>
           <Search />
         </nav>
-        {/* {(!this.state.open) ? null :  */}
         <ul onClick={() => this.handleNav()} className={'nav-links ' + (this.state.open ? 'slide' : '') + (!this.state.open && !this.state.refresh ? 'slide-back' : '')}>
           <li className='nav-buttons'><Link to='/'>Home</Link></li>
           <li className='nav-buttons'><Link to='/profile'>Profile</Link></li>
@@ -65,7 +64,6 @@ class Header extends Component {
             {this.props.isAuthed ? <Logout/> : <Login/>}
           </div>
         </ul>
-        {/* } */}
       </div>
     )
   }
