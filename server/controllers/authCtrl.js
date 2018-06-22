@@ -34,7 +34,8 @@ const getUser = (req, res, next) => {
 
 const logout = (req, res, next) => {
   req.session.destroy(() => {
-    res.redirect('http://localhost:3000/#/');
+    // res.redirect('http://localhost:3000/#/');
+    res.redirect('/#/');
   });
 };
 
