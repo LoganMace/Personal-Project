@@ -24,9 +24,7 @@ app.use(cors());
 app.use(json());
 app.use( express.static( `${__dirname}/../build` ) );
 
-app.get('*', (req, res)=>{
-    res.sendFile(path.join(__dirname, '../build/index.html'));
-});
+
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -96,5 +94,9 @@ app.get('/login',
 
 app.get('/api/me', getUser);
 app.get('/logout', logout);
+
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
 app.listen(port, ()=>console.log(`Listening on port: ${port}`));
