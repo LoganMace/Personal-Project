@@ -53,7 +53,7 @@ class ReviewForm extends Component {
     console.log(this.props);
     return (
       <div>
-        {!this.props.isAuthed ? (
+        {!this.props.user.isAuthed ? (
           <h1 className='login-message'>Log in to make a review!</h1>
         ) : (
           <div className='review-form'>
