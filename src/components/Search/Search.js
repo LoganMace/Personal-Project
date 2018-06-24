@@ -20,13 +20,14 @@ class Search extends Component {
     this.searchHandler = this.searchHandler.bind(this);
     this.submitHandler = this.submitHandler.bind(this);
     this.clickHandler = this.clickHandler.bind(this);
+    this.closeMenu = this.closeMenu.bind(this);
   }
 
   clickHandler() {
     this.setState({
       input: '',
       isOpen: false
-    })
+    });
   }
 
   searchHandler(e){
@@ -42,11 +43,10 @@ class Search extends Component {
         axios
           .get(`https://api.themoviedb.org/3/search/movie?${apiKey}&language=en-US&query=${this.state.input}&page=1&include_adult=false`)
           .then(response => {
-            // console.log(response.data.results);
-            this.setState({
-              results: response.data.results,
-              isOpen: true
-            })
+            // event.preventDefault(); 
+            this.setState({ results: response.data.results, isOpen: true }, () => {
+              document.addEventListener('click', this.closeMenu);
+            });
           });
       }
       else {
@@ -55,6 +55,12 @@ class Search extends Component {
         })
       }
     }
+  };
+
+  closeMenu() {
+    this.setState({ input: '', isOpen: false }, () => {
+      document.removeEventListener('click', this.closeMenu);
+    });
   };
 
 

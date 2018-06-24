@@ -19,18 +19,31 @@ class Header extends Component {
     }
     this.handleClick = this.handleClick.bind(this);
     this.handleNav = this.handleNav.bind(this);
+    this.closeMenu = this.closeMenu.bind(this);
   }
 
   componentDidMount() {
     this.props.getUser();
   };
 
-  handleClick() {
-    this.setState({
-      open: !this.state.open,
-      refresh: false
+  handleClick(event) {
+    // this.setState({
+    //   open: !this.state.open,
+    //   refresh: false
+    // });
+
+    event.preventDefault();
+    
+    this.setState({ open: !this.state.open, refresh: false }, () => {
+      document.addEventListener('click', this.closeMenu);
     });
   };
+
+  closeMenu() {
+    this.setState({ open: false }, () => {
+      document.removeEventListener('click', this.closeMenu);
+    });
+  }
 
   handleNav() {
     this.setState ({
@@ -39,7 +52,7 @@ class Header extends Component {
   };
 
   render() {
-    // console.log(this.props);
+    // console.log(this.state);
     return (
       <div>
         <nav>
