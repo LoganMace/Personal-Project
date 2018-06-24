@@ -89,9 +89,9 @@ class Following extends Component {
 
     return (
       <div>
-        {/* {!this.props.isAuthed ? (
+        {!this.props.isAuthed ? (
           <h1 className='login-message'>Log in to view following!</h1>
-        ) : ( */}
+        ) : (
         <div className='following-page'>
           <div className='search-user-bar'>
             <input onKeyPress={(e)=>{this.submitHandler(e)}} className='search-input' placeholder='Find Users' type="text" value={this.state.input} onChange={(e)=>{this.searchHandler(e)}}/>
@@ -106,7 +106,7 @@ class Following extends Component {
             {followList}
           </div>
         </div>
-        {/* // )} */}
+       )}
       </div>
     )
   }

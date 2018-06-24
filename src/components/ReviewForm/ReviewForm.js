@@ -52,24 +52,30 @@ class ReviewForm extends Component {
   render() {
     console.log(this.props);
     return (
-      <div className='review-form'>
-        {this.props.movie.selected.poster_path !== undefined ? (<img className='review-poster' src={`https://image.tmdb.org/t/p/w500/${this.props.movie.selected.poster_path}`} alt={`${this.props.movie.selected.title} poster`}/>) : null}
-        <div className='star-rating'>
-          <StarRatings
-            rating={this.state.reviewForm.rating}
-            starRatedColor="rgb(155, 1, 1)"
-            starHoverColor="rgb(155, 1, 1)"
-            changeRating={this.changeRating}
-            numberOfStars={5}
-            name='rating'
-            starDimension="30px"
-            starSpacing="5px"
-          />
-        </div>
-        <div className='review-bar'>
-          <textarea className='review-input' value={this.state.reviewForm.input} onChange={e => this.inputHandler(e)}/>
-          <button className='sub-btn' onClick={() => this.submitHandler()}>Submit</button>
-        </div>
+      <div>
+        {!this.props.isAuthed ? (
+          <h1 className='login-message'>Log in to make a review!</h1>
+        ) : (
+          <div className='review-form'>
+            {this.props.movie.selected.poster_path !== undefined ? (<img className='review-poster' src={`https://image.tmdb.org/t/p/w500/${this.props.movie.selected.poster_path}`} alt={`${this.props.movie.selected.title} poster`}/>) : null}
+            <div className='star-rating'>
+              <StarRatings
+                rating={this.state.reviewForm.rating}
+                starRatedColor="rgb(155, 1, 1)"
+                starHoverColor="rgb(155, 1, 1)"
+                changeRating={this.changeRating}
+                numberOfStars={5}
+                name='rating'
+                starDimension="30px"
+                starSpacing="5px"
+              />
+            </div>
+            <div className='review-bar'>
+              <textarea className='review-input' value={this.state.reviewForm.input} onChange={e => this.inputHandler(e)}/>
+              <button className='sub-btn' onClick={() => this.submitHandler()}>Submit</button>
+            </div>
+          </div>
+        )}
       </div>
     )
   }

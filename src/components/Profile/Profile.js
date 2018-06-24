@@ -81,7 +81,7 @@ class Profile extends Component {
     const { height, reviewText } = this.state;
 
     return (
-      <div>
+      <div className='textarea-outer'>
         <textarea
           ref='newReview'
           className="textarea"
@@ -113,21 +113,29 @@ class Profile extends Component {
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const {user} = this.props.user;
 
     const reviewList = this.props.user.userReviews.map((review, index) => {
       return  <div className='movie-reviews' key={review.review_id}>
-                <Link to={`/movie/${review.api_id}`}><img className='profile-review-poster' src={`https://image.tmdb.org/t/p/w92/${review.poster}`} alt={`${review.title} poster`}/></Link>
                 {(this.state.edit && review.review_id === this.state.editId) ? 
                   <div className="container">
-                    {this.getExpandableField()}
-                    <button className='rv-btn' onClick={() => this.submitEditHandler(review.review_id)}>Save</button>
-                    {this.getGhostField()}
+                    <div className='space-box'>
+                      <Link to={`/movie/${review.api_id}`}><img className='profile-review-poster' src={`https://image.tmdb.org/t/p/w300/${review.poster}`} alt={`${review.title} poster`}/></Link>
+                        <div className='edit-box'>
+                          {this.getExpandableField()}
+                          <button className='rv-btn' onClick={() => this.submitEditHandler(review.review_id)}>Save</button>
+                          {this.getGhostField()}
+                        </div>
+                    </div>
                   </div> :
-                  <p className='profile-review-text'> 
-                    {review.review}
-                  </p>
+                  <div className='space-box'>
+                    <Link to={`/movie/${review.api_id}`}><img className='profile-review-poster' src={`https://image.tmdb.org/t/p/w300/${review.poster}`} alt={`${review.title} poster`}/></Link>
+                    <p className='profile-review-text'> 
+                      {review.review}
+                    </p>
+                    <div className='profile-spacer'></div>
+                  </div>
                 }
                 {(review.rating === null) ? null : 
                   <div className='review-stars'>

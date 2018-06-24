@@ -63,7 +63,7 @@ class Home extends Component {
                         starSpacing="0px"
                       />
                     </div>}
-                  <Link to={`/movie/${review.api_id}`}><img className='follow-review-poster' src={`https://image.tmdb.org/t/p/w92/${review.poster}`} alt={`${review.title} poster`}/></Link>
+                  <Link to={`/movie/${review.api_id}`}><img className='follow-review-poster' src={`https://image.tmdb.org/t/p/w300/${review.poster}`} alt={`${review.title} poster`}/></Link>
                 </div>
               </div>
     });
@@ -78,11 +78,15 @@ class Home extends Component {
             {popular} 
           </Slider>
         </div>
-        <div className='timeline'>
-          <div className='home-reviews-list'>
-            {followReviews}
-          </div>
-        </div>
+        {(this.props.follow.followReviews[0]) ? 
+          <div className='timeline'>
+            <div className='home-reviews-list'>
+              {followReviews}
+            </div>
+          </div> : 
+          <div className='home-filler'>
+            Test
+          </div>} 
       </div>
     )
   }

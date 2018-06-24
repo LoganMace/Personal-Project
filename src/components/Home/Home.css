@@ -63,9 +63,15 @@
     -1px 1px 0 #444,
      1px 1px 0 #444;
 }
-.home-review-list {
+.home-reviews-list {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 3px;
+}
+
+@media (min-width: 800px) {
+  .follow-review-poster {
+    height: 20vh;
+  }
 }

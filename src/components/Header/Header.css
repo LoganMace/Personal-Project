@@ -30,7 +30,7 @@ nav {
 .nav-buttons a {
   display: block;
   text-decoration: none;
-  color: black;
+  color: white;
   font-weight: bolder;
 }
 .nav-buttons:hover {
@@ -62,5 +62,38 @@ nav {
   }
   100% {
     transform: translateY(0%);
+  }
+}
+
+
+@media(min-width: 900px) {
+  .burger-btn {
+    display: none;
+  }
+  nav {
+    justify-content: flex-end;
+  }
+  .nav-links {
+    flex-direction: row;
+    /* justify-content: space-between; */
+    position: fixed;
+    width: 35vw;
+    /* margin-left: 20px; */
+    /* padding: 5px 0; */
+    top: 0px;
+    z-index: 99;
+    background: rgba(155, 1, 1);
+    border-radius: 2px;
+  }
+  .nav-buttons {
+    border: none;
+    line-height: 50px;
+    width: 100%;
+    padding: 0;
+    /* padding: 0 3vw; */
+  }
+  .nav-buttons:hover {
+    background: rgb(184, 48, 48);
+    /* background-color: rgba(155, 1, 1, 0.541); */
   }
 }

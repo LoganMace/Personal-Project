@@ -42,7 +42,7 @@ class PublicProfile extends Component {
 
     const reviewList = this.props.user.userReviews.map((review) => {
       return  <div className='movie-reviews' key={review.review_id}>
-                <Link to={`/movie/${review.api_id}`}><img className='profile-review-poster' src={`https://image.tmdb.org/t/p/w92/${review.poster}`} alt={`${review.title} poster`}/></Link>
+                <Link to={`/movie/${review.api_id}`}><img className='profile-review-poster' src={`https://image.tmdb.org/t/p/w300/${review.poster}`} alt={`${review.title} poster`}/></Link>
                 {(review.rating === null) ? null : 
                   <div className='review-stars'>
                     <StarRatings
@@ -66,7 +66,8 @@ class PublicProfile extends Component {
                   <img className='profile-pic' src={profile.avatar} alt="user-avatar"/>
                   <p className='pic-username'>{profile.username}</p>
                 </div>
-                {(this.props.follow.followCheck) ? <button className='follow-btn' onClick={() => this.unFollowHandler()}>UnFollow</button> : <button className='follow-btn' onClick={() => this.followHandler(this.props.user.user.id, this.props.match.params.id)}>Follow</button>}
+                {(!this.props.user.isAuthed) ? null : 
+                (this.props.follow.followCheck) ? <button className='follow-btn' onClick={() => this.unFollowHandler()}>UnFollow</button> : <button className='follow-btn' onClick={() => this.followHandler(this.props.user.user.id, this.props.match.params.id)}>Follow</button>}
                 <h1 className='review-count'>Reviews Made({this.props.user.reviewCount})</h1>
                 <p className='profile-interests'><span>Movie Interests:</span></p>
                 <p className='profile-interests'>{profile.interests}</p>

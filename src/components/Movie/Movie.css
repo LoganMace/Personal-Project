@@ -5,9 +5,13 @@
   padding-top: 20px;
   padding-bottom: 5px;
   width: 90vw;
+  max-width: 750px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.movie-card a {
+  text-decoration: none;
 }
 .selected-poster {
   width: 300px;
@@ -31,8 +35,9 @@
 }
 .movie-reviews {
   border: solid 1px rgba(169, 169, 169, 0.459);
-  height: max-content;
+  /* height: max-content; */
   width: 100%;
+  max-width: 800px;
   margin-top: 3px;
   display: flex;
   justify-content: space-between;
@@ -60,7 +65,7 @@
   box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.37);
 }
 .user-tag p {
-  font-size: .8em;
+  /* font-size: .8em; */
   border-radius: 5px;
   font-weight: bolder;
   /* background: rgba(255, 255, 255, 0.322);
@@ -81,7 +86,7 @@
   /* border: solid 1px black; */
   border-radius: 2px;
   background: rgba(255, 255, 255, 0.26);
-  white-space: pre;
+  white-space: pre-wrap;
 }
 .review-buttons {
   position: absolute;
@@ -93,12 +98,18 @@
 }
 .rv-btn {
   height: 25px;
-  border: solid 1px rgba(0, 0, 0, 0.377);
+  /* border: solid 1px rgba(0, 0, 0, 0.377); */
+  border-style: none;
+  box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.37);
+  color: white;
   /* border-style: none; */
   background-color: rgba(155, 1, 1, 0.801);
   border-radius: 3px;
   font-weight: bolder;
   margin-top: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .rv-btn:hover {
   background-color: rgb(184, 48, 48);
@@ -121,7 +132,15 @@
   width: 100%;
   text-align: left;
 }
-
+.edit-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.textarea-outer {
+  width: 100%;
+}
 .textarea {
   /* margin: 18px 40px 18px 10px; */
   width: 100%;
@@ -131,7 +150,7 @@
   box-shadow: none;
   display: block;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 3px;
   /* white-space: pre-wrap; */
   overflow: hidden;
   /* overflow: scroll; */
@@ -148,4 +167,11 @@
   visibility: hidden;
   position: absolute;
   top: 0;
+}
+
+
+@media (min-width: 800px) {
+  .movie-reviews{
+    min-height: 200px;
+  }
 }
