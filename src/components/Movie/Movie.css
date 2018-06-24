@@ -56,13 +56,21 @@
   width: 50px;
   color: rgb(17, 17, 17);
 }
-.user-review-pic {
+.review-pic-box {
   height: 50px;
   width: 50px;
   overflow: hidden;
   border-radius: 50%;
+  object-fit: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   /* border: solid 1px black; */
   box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.37);
+}
+.user-review-pic {
+  height: 50px;
+  width: auto;
 }
 .user-tag p {
   /* font-size: .8em; */

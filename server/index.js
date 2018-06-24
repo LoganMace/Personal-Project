@@ -14,7 +14,7 @@ const { getPopular, getSpecific, searchMovie, getDbMovie, getAverage } = require
 const { strat, getUser, logout } = require(`${__dirname}/controllers/authCtrl`);
 const { editInterests, editUsername, editAvatar, getUserReviews, getUserById, getTotal, updateReviewCount, searchUser } = require(`${__dirname}/controllers/userCtrl`);
 const { addReview, getMovieReviews, deleteReview, editReview } = require(`${__dirname}/controllers/reviewCtrl`);
-const { addFollow, getFollowReviews, getFollowList, deleteFollow, getFollowCheck, getFollowUsers } = require(`${__dirname}/controllers/followCtrl`);
+const { addFollow, getFollowReviews, getFollowList, deleteFollow, getFollowCheck, getFollowUsers, getFollowerUsers } = require(`${__dirname}/controllers/followCtrl`);
 
 massive(process.env.CONNECTION_STRING)
   .then(db => app.set('db', db))
@@ -82,6 +82,7 @@ app.get('/api/followlist/:id', getFollowList);
 app.post('/api/followdelete', deleteFollow);
 app.post('/api/followcheck', getFollowCheck);
 app.get('/api/following/:id', getFollowUsers);
+app.get('/api/followers/:id', getFollowerUsers);
 
 app.get('/login',
   passport.authenticate('auth0', {

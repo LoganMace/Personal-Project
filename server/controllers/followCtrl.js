@@ -38,7 +38,13 @@ function getFollowUsers(req, res, next) {
   .followInfo.get_followUsers([req.params.id])
   .then(response => res.status(200).json(response))
   .catch(err => console.log(err));
-}
+};
+function getFollowerUsers(req, res, next) {
+  req.app.get('db')
+  .followInfo.get_followUsers([req.params.id])
+  .then(response => res.status(200).json(response))
+  .catch(err => console.log(err));
+};
 
 module.exports = {
   addFollow,
@@ -46,5 +52,6 @@ module.exports = {
   getFollowList,
   deleteFollow,
   getFollowCheck,
-  getFollowUsers
+  getFollowUsers,
+  getFollowerUsers
 };

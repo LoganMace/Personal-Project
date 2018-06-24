@@ -141,7 +141,9 @@ class Movie extends Component {
     const reviewList = this.props.review.reviews.map((review, index) => {
       return  <div className='movie-reviews' key={review.review_id}>
                 <div className='user-tag'>
-                  <Link to={`/profile/${review.user_id}`}><img className='user-review-pic' src={review.avatar} alt="user-avatar"/></Link>
+                  <div className='review-pic-box'>
+                    <Link to={`/profile/${review.user_id}`}><img className='user-review-pic' src={review.avatar} alt="user-avatar"/></Link>
+                  </div>
                   <p>{review.username}</p>
                 </div>
                 {(this.state.edit && review.review_id === this.state.editId) ? 

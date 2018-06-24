@@ -46,7 +46,9 @@ class Home extends Component {
     const followReviews = this.props.follow.followReviews.map((review) => {
       return  <div className='movie-reviews' key={review.review_id}>
                 <div className='user-tag'>
-                  <Link to={`/profile/${review.user_id}`}><img className='user-review-pic' src={review.avatar} alt="user-avatar"/></Link>
+                  <div className='review-pic-box'>
+                    <Link to={`/profile/${review.user_id}`}><img className='user-review-pic' src={review.avatar} alt="user-avatar"/></Link>
+                  </div>
                   <p>{review.username}</p>
                 </div>
                 <p className='follow-card-text'>

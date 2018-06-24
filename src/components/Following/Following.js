@@ -6,7 +6,7 @@ import { faSearch } from '@fortawesome/fontawesome-free-solid';
 
 import './Following.css'
 import { updateCount, searchUser } from '../../ducks/userReducer';
-import { getFollowUsers } from '../../ducks/followReducer';
+import { getFollowUsers, getFollowerUsers } from '../../ducks/followReducer';
 
 
 class Following extends Component {
@@ -24,6 +24,7 @@ class Following extends Component {
   componentDidMount() {
     this.props.updateCount();
     this.props.getFollowUsers(this.props.user.id);
+    this.props.getFollowerUsers(this.props.user.id);
   };
 
   searchHandler(e){
@@ -57,9 +58,23 @@ class Following extends Component {
   };
 
   render() {
-    // console.log(this.props);
+    console.log(this.props);
 
     const followList = this.props.following.map((user) => {
+      return (
+        <div className='link-wrap' key={user.id}>
+          <Link to={`/profile/${user.id}`}>
+            <div className='following-card'>
+              <img className='following-avatar' src={user.avatar} alt={`${user.username} avatar`}/>
+              <h1 className='following-username'>{user.username}</h1>
+              <h2 className='following-count'>{`Reviews (${user.review_count})`}</h2>
+            </div>
+          </Link>
+        </div>
+      )
+    });
+
+    const followerList = this.props.followers.map((user) => {
       return (
         <div className='link-wrap' key={user.id}>
           <Link to={`/profile/${user.id}`}>
@@ -100,10 +115,19 @@ class Following extends Component {
           {(this.state.isOpen) ? <div className='user-results-box'>
             {searchResults}
           </div> : null}
-          
-          <h1 className='follow-total'>Following ({this.props.following.length})</h1>
-          <div className='follow-list'>
-            {followList}
+          <div className='follow-frame'>
+            <div className='follow-set'>
+              <h1 className='follow-total'>Following ({this.props.following.length})</h1>
+              <div className='follow-list'>
+                {followList}
+              </div>
+            </div>
+            <div className='follow-set'>
+              <h1 className='follow-total'>Followers ({this.props.followers.length})</h1>
+              <div className='follow-list'>
+                {followerList}
+              </div>
+            </div>
           </div>
         </div>
        )}
@@ -120,4 +144,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {updateCount, getFollowUsers, searchUser})(Following);
+export default connect(mapStateToProps, {updateCount, getFollowUsers, getFollowerUsers, searchUser})(Following);

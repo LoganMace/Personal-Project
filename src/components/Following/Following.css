@@ -3,12 +3,19 @@
   flex-direction: column;
   align-items: center;
 }
+.follow-set {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
 .follow-total {
   background: rgba(255, 255, 255, 0.329);
   font-weight: bold;
   border-radius: 3px;
   padding: 5px;
   margin-top: 20px;
+  width: 40%;
 }
 .follow-list {
   width: 300px;
@@ -54,4 +61,13 @@
   justify-content: space-between;
   margin-bottom: 3px;
   font-weight: bold;
+}
+
+@media(min-width: 700px) {
+  .follow-frame {
+    display: flex;
+    justify-content: space-between;
+    width: 90vw;
+    max-width: 1000px;
+  }
 }

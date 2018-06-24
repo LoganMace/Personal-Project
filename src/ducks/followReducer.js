@@ -6,6 +6,7 @@ const GET_FOLLOW_LIST = 'GET_FOLLOW_LIST';
 const DELETE_FOLLOW ='DELETE_FOLLOW';
 const FOLLOW_CHECK = 'FOLLOW_CHECK';
 const GET_FOLLOW_USERS = 'GET_FOLLOW_USERS';
+const GET_FOLLOWER_USERS = 'GET_FOLLOWER_USERS';
 
 export function addFollow(userid, followid) {
   return {
@@ -44,12 +45,20 @@ export function getFollowUsers(id) {
     payload: axios.get(`/api/following/${id}`)
   };
 };
+export function getFollowerUsers(id) {
+  // console.log(id);
+  return {
+    type: GET_FOLLOWER_USERS,
+    payload: axios.get(`/api/followers/${id}`)
+  };
+};
 
 const initialState = {
   followCheck: {},
   followList: [],
   followReviews: [],
-  following: []
+  following: [],
+  followers: []
 };
 
 export default function followReducer(state=initialState, action) {
@@ -83,6 +92,11 @@ export default function followReducer(state=initialState, action) {
       return {
         ...state,
         following: action.payload.data
+      };
+    case `${GET_FOLLOWER_USERS}_FULFILLED`:
+      return {
+        ...state,
+        followers: action.payload.data
       };
     default:
       return state;
