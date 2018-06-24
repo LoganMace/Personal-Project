@@ -46,6 +46,9 @@ class Movie extends Component {
     // console.log(prevProps);
     if(this.props.match.params.id !== prevProps.match.params.id){
       this.props.getSpecific(this.props.match.params.id);
+      this.props.getMovieReviews(this.props.match.params.id);
+      this.props.getAverage(this.props.match.params.id);
+      this.props.getDbMovie(this.props.match.params.id);
     }
     // if(this.props.review.reviews !== prevProps.review.reviews){
     //   this.props.getMovieReviews(this.props.match.params.id);

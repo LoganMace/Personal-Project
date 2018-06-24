@@ -5,7 +5,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/fontawesome-free-solid';
 
 import './Following.css'
-import { updateCount, searchUser } from '../../ducks/userReducer';
+import { updateCount, searchUser, getUser } from '../../ducks/userReducer';
 import { getFollowUsers, getFollowerUsers } from '../../ducks/followReducer';
 
 
@@ -23,8 +23,10 @@ class Following extends Component {
 
   componentDidMount() {
     this.props.updateCount();
-    this.props.getFollowUsers(this.props.user.id);
-    this.props.getFollowerUsers(this.props.user.id);
+    this.props.getUser().then(() => {
+      this.props.getFollowUsers(this.props.user.id);
+      this.props.getFollowerUsers(this.props.user.id);
+    })
   };
 
   searchHandler(e){
@@ -58,7 +60,7 @@ class Following extends Component {
   };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
 
     const followList = this.props.following.map((user) => {
       return (
@@ -144,4 +146,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {updateCount, getFollowUsers, getFollowerUsers, searchUser})(Following);
+export default connect(mapStateToProps, {updateCount, getFollowUsers, getFollowerUsers, searchUser, getUser})(Following);

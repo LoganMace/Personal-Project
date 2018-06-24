@@ -41,7 +41,7 @@ function getFollowUsers(req, res, next) {
 };
 function getFollowerUsers(req, res, next) {
   req.app.get('db')
-  .followInfo.get_followUsers([req.params.id])
+  .followInfo.get_followerUsers([req.params.id])
   .then(response => res.status(200).json(response))
   .catch(err => console.log(err));
 };
