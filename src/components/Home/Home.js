@@ -5,6 +5,7 @@ import { getUser } from '../../ducks/userReducer';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import StarRatings from 'react-star-ratings';
+import movieQuotes from 'movie-quotes';
 
 import { getFollowReviews } from '../../ducks/followReducer';
 import "slick-carousel/slick/slick.css"; 
@@ -87,7 +88,8 @@ class Home extends Component {
             </div>
           </div> : 
           <div className='home-filler'>
-            Test
+            {movieQuotes.random()}
+            <h1 className='home-message'>Follow some friends, and go watch some movies!</h1>
           </div>} 
       </div>
     )

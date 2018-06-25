@@ -69,6 +69,20 @@
   align-items: center;
   margin-bottom: 3px;
 }
+.home-filler {
+  color: white;
+  margin: 50px auto;
+  font-size: 25px;
+  width: 90vw;
+  max-width: 600px;
+}
+.home-message {
+  color: white;
+  margin: 125px auto;
+  font-size: 18px;
+  width: 90vw;
+  max-width: 600px;
+}
 
 @media (min-width: 800px) {
   .follow-review-poster {
