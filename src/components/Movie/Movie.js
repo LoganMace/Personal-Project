@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-// import { faTrashAlt } from '@fortawesome/fontawesome-free-solid';
 import { faEdit, faTrashAlt } from '@fortawesome/fontawesome-free-regular';
 import StarRatings from 'react-star-ratings';
 
@@ -49,10 +48,6 @@ class Movie extends Component {
       this.props.getAverage(this.props.match.params.id);
       this.props.getDbMovie(this.props.match.params.id);
     }
-    // if(this.props.review.reviews !== prevProps.review.reviews){
-    //   this.props.getMovieReviews(this.props.match.params.id);
-    // }
-    // return false;
   };
 
   deleteHandler(id) {
