@@ -17,7 +17,6 @@ class Movie extends Component {
   constructor() {
     super();
     this.state = {
-      deleted: false,
       edit: false,
       reviewText: '',
       editId: null,
@@ -57,9 +56,9 @@ class Movie extends Component {
   };
 
   deleteHandler(id) {
-    this.props.deleteReview(id).then(response => this.props.getMovieReviews(this.props.match.params.id)).then(() => this.setState({
-      deleted: !this.state.deleted
-    })).then(() => this.props.getAverage(this.props.match.params.id));
+    this.props.deleteReview(id)
+      .then(response => this.props.getMovieReviews(this.props.match.params.id))
+      .then(() => this.props.getAverage(this.props.match.params.id));
   };
 
   submitEditHandler(id) {
@@ -139,7 +138,6 @@ class Movie extends Component {
   render() {
     // console.log('PROPS!!!   ', this.props);
     // console.log('STATE!!!   ', this.state);
-    // console.log('ghost   ', this);
 
     const reviewList = this.props.review.reviews.map((review, index) => {
       return  <div className='movie-reviews' key={review.review_id}>

@@ -86,10 +86,10 @@ app.get('/api/followers/:id', getFollowerUsers);
 
 app.get('/login',
   passport.authenticate('auth0', {
-    // successRedirect: 'http://localhost:3000/#/',
-    // failureRedirect: 'http://localhost:3001/login'
-    successRedirect: '/#/',
-    failureRedirect: '/login'
+    successRedirect: 'http://localhost:3000/#/',
+    failureRedirect: 'http://localhost:3001/login'
+    // successRedirect: '/#/',
+    // failureRedirect: '/login'
   })
 );
 
